@@ -21,3 +21,7 @@
   * [XSLT](xml/xslt.md)
   * [XML Schema](xml/xml-schema.md)
   * [XPath](xml/xpath.md)
+
+## javascript
+
+* [FAQ](javascript/faq.md)
