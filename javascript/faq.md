@@ -274,3 +274,71 @@ sonyPhone.callSomeone('小明'); // Sony 打通電話給 小明
 sonyPhone.callSomeone2('傑哥'); // undefined 打通電話給 傑哥
 ```
 
+## ++運算子
+
+\++運算子放在變數前與變數後的行為和C++一致。
+
+* \++ 放在變數前面時，得到的會是「+1 之後的結果」
+* \++ 放在變數後面時，回傳的結果會是「原始的數值」
+
+```javascript
+var a = 10;
+var b = 10;
+
+console.log(a++);       // 10
+console.log(++b);       // 11
+
+console.log(a);         // 11
+console.log(b);         // 11
+```
+
+## 比較時自動轉型的規則
+
+在兩個等號 == 的比較運算式下，若是雙方的資料型別不同時，則會進行「自動轉型」，那麼這裡就來說明自動轉型的規則。
+
+在 JavaScript 這門程式語言中，大家會提倡儘量使用 === 來取代 == 。
+
+* 如果其中有一個值為「Boolean」的情況下，會將 true 轉型為「數字」的 1， false 則會變成數字的 0&#x20;
+* 如果遇到字串與數字做比較的情況下，則會將字串透過 Number() 嘗試轉型為數字後，再進行比較。&#x20;
+* 如果其中一方是「物件」型別，而另一方是基本型別的情況下，則會先透過物件的 valueOf() 方法取得對應的基本型別的值，再進行比較。
+* NaN 不等於 NaN，不管是兩個等號或三個等號都一樣。&#x20;
+* 當兩個物件進行比較時，要看兩者是否指向同一個「實體」，只有在指向同一個「實體」時才會回傳 true。
+
+```javascript
+var a = 10;
+var b = 100;
+// 同類型的比較沒有問題
+console.log( a == b );        // false
+console.log( a == 10 );       // true
+
+// 不同類型的比較會自動轉型
+var a = 10;
+var b = "10";
+console.log( a == b );        // true
+
+true == 'true'      // false
+false == 'false'    // false
+
+false == 0    // true
+true == 1     // true
+
+[] == []      // false
+[] == ![]     // true
+
+[] == ''      // true
+[] == 0       // true
+
+[''] == ''    // true
+[0] == 0      // true
+
+[0] == ''     // false
+[''] == 0     // true
+
+null == undefined   // true
+
+[null] == ''        // true
+[null] == 0         // true
+
+[undefined] == ''   // true
+[undefined] == 0    // true
+```
