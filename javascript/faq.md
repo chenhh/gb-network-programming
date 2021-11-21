@@ -342,3 +342,92 @@ null == undefined   // true
 [undefined] == ''   // true
 [undefined] == 0    // true
 ```
+
+* [\[參考資料\]Javascript真值表](https://thomas-yang.me/projects/oh-my-dear-js/)
+
+## 函式是物件的一種
+
+除了基本型別以外的都是物件。
+
+當我們透過 typeof 去檢查一個「函式 (function) 」的時候，雖然你會得到 "function" 的結果，讓你以為 function 也是 JavaScript 定義的一種型別，但實際上它仍屬於 Object 的一種。
+
+可以把它想像成是一種可以被呼叫 (be invoked) 的特殊物件 (值)。
+
+宣告函式的方法有好幾種，但不管是什麼方式，通常一個函式會包含三個部分：
+
+* 函式的名稱 (也可能沒有名稱，稍後會提到)&#x20;
+* 在括號 ( ) 中的部分，稱為「引數 (arguments) 」，引數與引數之間會用逗號 , 隔開&#x20;
+* 在大括號 { } 內的部分，內含需要重複執行的內容，是函式功能的主要區塊。
+
+```javascript
+function square(number) {
+  return number * number;
+}
+
+square(2);        // 4
+square(3);        // 9
+square(4);        // 16
+```
+
+## 定義函式的方式
+
+常見定義函式的方式有這幾種：
+
+* 函式宣告（Function Declaration）&#x20;
+* 函式運算式（Function Expressions）&#x20;
+* 透過 new Function 關鍵字建立函式
+
+### 函式宣告（Function Declaration）
+
+```javascript
+function 名稱([引數]) {
+  // 做某事
+}
+
+function square(number) {
+  return number * number;
+}
+```
+
+### 函式運算式（Function Expressions）
+
+透過 變數名稱 = function(\[引數]){ ... }; 的方式，將一個函式透過 = 指定給某個變數。
+
+在範例裡 = 後面的 function 是「沒有名字」。通常我們會稱它為「匿名函式」。
+
+也可以命名函式，但是要注意的是，這個名字只在「自己函式的區塊內」有效。
+
+```javascript
+// anonymous function
+var square = function (number) {
+  return number * number;
+};
+
+// 也可以命名函式，但只有在函式區塊內有效
+var square = function func(number) {
+  console.log( typeof func );   // "function"
+  return number * number;
+};
+
+console.log( typeof func );     // undefined
+```
+
+### 透過 new Function 關鍵字建立函式
+
+接使用 Function (注意 F 大寫) 這個關鍵字來建立函式物件。 使用時將引數與函式的內容依序傳入 Function，就可以建立一個函式物件了。
+
+```javascript
+// 透過 new 來建立 Function "物件"
+var square = new Function('number', 'return number * number');
+```
+
+透過 new Function 所建立的函式物件，每次執行時都會進行解析「字串」(如 'return number \* number' ) 的動作，運作效能較差，所以通常實務上也較少會這樣做。
+
+## 全域變數與區域變數
+
+其實在 JavaScript 這門語言中，沒有所謂「全域變數」這種東西。 更準確地說，我們所說的「全域變數」其實指的是「全域物件」(或者叫「頂層物件」) 的屬性。
+
+* 以瀏覽器來說，「全域物件」指的就是 window，在 node 環境中則叫做 global。
+* 變數有效範圍 (scope) 的最小切分單位是 function (ES6 的 let 與 const 例外)&#x20;
+* 即使是寫在函式內，沒有 var 的變數會變成「全域變數」&#x20;
+* 全域變數指的是全域物件 (頂層物件) 的「屬性」
