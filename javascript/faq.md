@@ -1,5 +1,7 @@
 # FAQ
 
+![](../.gitbook/assets/html\_js\_css-min.png)
+
 ## Java 跟 JavaScript的關係
 
 大概就像是「臘腸」跟「臘腸狗」的關係吧，只是兩者的樣子有「一點點」類似，就把名字借來用了。
