@@ -27,3 +27,7 @@
 * [瀏覽器裡的 JavaScript](javascript/liu-lan-qi-li-de-javascript.md)
 * [事件驅動](javascript/shi-jian-qu-dong.md)
 * [FAQ](javascript/faq.md)
+
+## webassembly
+
+* [wasm簡介](webassembly/wasm-jian-jie.md)
