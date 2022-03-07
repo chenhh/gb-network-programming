@@ -28,6 +28,10 @@
 * [事件驅動](javascript/shi-jian-qu-dong.md)
 * [FAQ](javascript/faq.md)
 
+## TYPESCRIPT
+
+* [簡介](typescript/jian-jie.md)
+
 ## webassembly
 
 * [wasm簡介](webassembly/wasm-jian-jie.md)
