@@ -62,6 +62,159 @@ let lang = "Java";
 lang = lang + "Script";  // 先銷毀再創建
 ```
 
+我們也可將字串常用的操作方法歸納為新增、刪除、修改、查詢，需要知道字串的特點是一旦創建了，就不可變。
+
+### string常用新增方法
+
+這裡增的意思並不是說直接增添內容，而是創建字串的一個副本，再進行操作。除了常用`+`以及`${}`進行字串拼接之外，還可通過`concat()`。
+
+concat()用於將一個或多個字串拼接成一個新字串。
+
+```javascript
+let stringValue = "hello ";
+let result = stringValue.concat("world");
+console.log(result); // "hello world"
+console.log(stringValue); // "hello"
+```
+
+### string常用刪除方法
+
+這裡的刪的意思並不是說刪除原字串的內容，而是創建字串的一個副本，再進行操作。
+
+常見的有：
+
+* slice()
+* substr()
+* substring()&#x20;
+
+這三個方法都返回調用它們的字串的一個子字串，而且都接收一或兩個參數。
+
+```javascript
+let stringValue = "hello world";
+console.log(stringValue.slice(3)); // "lo world"
+console.log(stringValue.substring(3)); // "lo world"
+console.log(stringValue.substr(3)); // "lo world"
+console.log(stringValue.slice(3, 7)); // "lo w"
+console.log(stringValue.substring(3,7)); // "lo w"
+console.log(stringValue.substr(3, 7)); // "lo worl"
+```
+
+### string常用修改方法
+
+這裡改的意思也不是改變原字串，而是創建字串的一個副本，再進行操作。常見的有：
+
+* trim()、trimLeft()、trimRight()
+* repeat()
+* padStart()、padEnd()
+* toLowerCase()、 toUpperCase()
+
+trim()、trimLeft()、trimRight() 刪除前、後或前後所有空格符，再返回新的字串。
+
+```javascript
+let stringValue = " hello world ";
+let trimmedStringValue = stringValue.trim();
+console.log(stringValue); // " hello world "
+console.log(trimmedStringValue); // "hello world"
+```
+
+repeat() 接收一個整數參數，表示要將字串復制多少次，然後返回拼接所有副本後的結果。
+
+```javascript
+let stringValue = "na ";
+let copyResult = stringValue.repeat(2) // na na 
+```
+
+padEnd() 復制字串，如果小於指定長度，則在相應一邊填充字元，直至滿足長度條件。
+
+```javascript
+let stringValue = "foo";
+console.log(stringValue.padStart(6)); // " foo"
+console.log(stringValue.padStart(9, ".")); // "......foo"
+```
+
+toLowerCase()、 toUpperCase() 大小寫轉化。
+
+```javascript
+let stringValue = "hello world";
+console.log(stringValue.toUpperCase()); // "HELLO WORLD"
+console.log(stringValue.toLowerCase()); // "hello world"
+```
+
+### string常用查詢方法
+
+除了通過索引的方式獲取字串的值，還可通過：
+
+* chatAt()
+* indexOf()
+* startWith()
+* includes()
+
+charAt() 返回給定索引位置的字元，由傳給方法的整數參數指定。
+
+```javascript
+let message = "abcde";
+console.log(message.charAt(2)); // "c"
+```
+
+indexOf() 從字串開頭去搜尋傳入的字串，並返回位置（如果沒找到，則返回 -1 ）
+
+```javascript
+let stringValue = "hello world";
+console.log(stringValue.indexOf("o")); // 4
+```
+
+startWith()、includes() 從字串中搜尋傳入的字串，並返回一個表示是否包含的布林值。
+
+```javascript
+let message = "foobarbaz";
+console.log(message.startsWith("foo")); // true
+console.log(message.startsWith("bar")); // false
+console.log(message.includes("bar"));   // true
+console.log(message.includes("qux"));   // false
+```
+
+### string常用轉換方法
+
+split()把字串按照指定的分割符，拆分成數組中的每一項。
+
+```javascript
+let str = "12+23+34"
+let arr = str.split("+") // [12,23,34]
+```
+
+### string常用模板匹配方法
+
+針對正則表達式，字串設計了幾個方法：
+
+* match()
+* search()
+* replace()
+
+match() 接收一個參數，可以是一個正則表達式字串，也可以是一個RegExp對象，返回陣列。
+
+```javascript
+let text = "cat, bat, sat, fat";
+let pattern = /.at/;
+let matches = text.match(pattern);
+console.log(matches[0]); // "cat"
+```
+
+search() 接收一個參數，可以是一個正則表達式字串，也可以是一個RegExp對象，找到則返回匹配索引，否則返回 -1。
+
+```javascript
+let text = "cat, bat, sat, fat";
+let pos = text.search(/at/);
+console.log(pos); // 1
+```
+
+replace() 接收兩個參數，第一個參數為匹配的內容，第二個參數為替換的元素（可用函數）。
+
+```javascript
+let text = "cat, bat, sat, fat";
+let result = text.replace("at", "ond");
+console.log(result); // "cond, bat, sat, fat"
+```
+
 ### Boolean
 
 Boolean（布林值）類型有兩個字面值： true 和false。通過Boolean可以將其他類型的數據轉化成布林值。
