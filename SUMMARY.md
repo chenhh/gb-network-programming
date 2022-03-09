@@ -29,6 +29,7 @@
 * [FAQ](javascript-yu-nodejs/faq.md)
 * [Node.js](javascript-yu-nodejs/node.js/README.md)
   * [webpack](javascript-yu-nodejs/node.js/webpack.md)
+  * [gulp](javascript-yu-nodejs/node.js/gulp.md)
 
 ## TYPESCRIPT
 
