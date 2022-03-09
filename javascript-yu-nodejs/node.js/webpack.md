@@ -10,4 +10,10 @@
 * 將 LESS 或 SCSS 轉換成 CSS：使用更好的方式來撰寫 CSS。
 * 使用 HMR（Hot Module Replacement）：增加開發速度。每當你儲存程式碼的時候，它可以注入到網頁，而不需將網頁重新整理。
 * 包含任何型別的檔案到你的 JavaScript：減少對其他 build 工具的需要，讓你可以透過程式的方式修改或使用這些檔案。
-*
+
+
+
+參考資料
+
+* [Webpack Tutorial 繁體中文 Gitbook](https://neighborhood999.github.io/webpack-tutorial-gitbook/)
+
