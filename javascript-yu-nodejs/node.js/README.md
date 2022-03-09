@@ -60,6 +60,20 @@ npm 主要下載與使用套件的方式有兩種：
 | npm cache clean                   | 清空NPM本地緩存，用於使用相同版本號發布新版本代碼的套件。     |                                          |
 | npm unpublish {package}@{version} | 撤銷已發佈特定版號的套件                       |                                          |
 
+### npm install的--save與--save-dev區別
+
+* `npm install packagename --save`;
+* `npm install packagename --save-dev`;
+
+兩者可以從 package.json 中看到分別有 dependencies 與 devDependencies 兩個節點，分別有裝入不同的套件。
+
+–save 與 –save-dev 的兩個安裝指令，前者分別是指到 dependencies 與 devDependencies 下，後者則是只有寫入 devDependencies 下。所以執行 npm install 時，可以根據需求，使用不同的指令安裝。
+
+其實，這兩個的差異，關係到開發環境與釋出環境。下面分別列舉使用目的與原因：
+
+* dependencies : 使用在已經發佈的環境下，換句話說，是指發佈後仍然需要依賴使用的 plug-in。舉個例子來說，如果我需要使用 jQuery 與 AngularJs 來開發，就算開發完之後釋出到伺服器，我仍然需要依賴 jQuery 與 AngularJs 的套件，這些套件會在發佈後繼續使用。 用法：當我執行 npm install –production 或是註明 NODE\_ENV 變數值為為 production 時，只會下載 dependencies 中的套件。&#x20;
+* devDependencies : 使用在開發中的環境下，意思是指——只單純會在開發時應用到的 plug-in。同樣舉個例子，如果我在開發時需要使用 Js ES6 並使用 babel 轉換成 ES5，或是我希望可以使用 gulp-stylus 的套件來使用，但在釋出之後，我們並不會在用到 gulp-stylus 這個套件。換句話說，他只需要存在於開發環境中，而不需要繼續放到發佈環境裡。
+
 ### 版本號
 
 npm語義版本號分為X.Y.Z三位，分別代表主版本號、次版本號和補丁版本號。當代碼變更時，版本號按以下原則更新。
