@@ -4,8 +4,8 @@
 
 在JavaScript中，我們可以分成兩種類型：
 
-* 基本類型：in stack。
-* 復雜類型：in heap。
+* 基本類型：(copy/call by value)。
+* 復雜類型：(copy/call by reference)。
 * 兩種類型的區別是：存儲位置不同。
 
 ## 基本類型
