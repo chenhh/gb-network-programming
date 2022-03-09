@@ -22,11 +22,12 @@
   * [XML Schema](xml/xml-schema.md)
   * [XPath](xml/xpath.md)
 
-## javascript
+## javascript與nodejs
 
-* [瀏覽器裡的 JavaScript](javascript/liu-lan-qi-li-de-javascript.md)
-* [事件驅動](javascript/shi-jian-qu-dong.md)
-* [FAQ](javascript/faq.md)
+* [瀏覽器裡的 JavaScript](javascript-yu-nodejs/liu-lan-qi-li-de-javascript.md)
+* [事件驅動](javascript-yu-nodejs/shi-jian-qu-dong.md)
+* [FAQ](javascript-yu-nodejs/faq.md)
+* [Node.js](javascript-yu-nodejs/node.js.md)
 
 ## TYPESCRIPT
 
