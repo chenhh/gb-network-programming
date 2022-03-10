@@ -363,7 +363,11 @@ console.log(null == undefined); // true
 
 ### Symbol
 
+symbol是在 ES2015 後的新基本型別。以一句話來介紹，<mark style="color:red;">以這種型態宣告的值，每次都是不同的</mark>。這種資料型態的出現，也讓物件在新增屬性上有相當的擴充。
+
 Symbol （符號）是原始值，且符號實例是唯一、不可變的。符號的用途是確保物件屬性使用唯一標識符，不會發生屬性沖突的危險。
+
+在 ES5 以前，物件的屬性名稱只能接受字串型別；但在 ES2015 後，屬性名稱的型別除了字串以外，還可以接受symbol型態的值。這麼做的用意是，因為每次宣告的值都不一樣，所以可以保證不會因名稱重複，而被覆寫屬性值的問題。
 
 ```javascript
 let genericSymbol = Symbol();
@@ -374,6 +378,29 @@ typeof genericSymbol // 'symbol'
 let fooSymbol = Symbol('foo');
 let otherFooSymbol = Symbol('foo');
 console.log(fooSymbol == otherFooSymbol); // false
+```
+
+在物件中如何以symbol建立屬性以及取用
+
+```javascript
+const prop = Symbol('prop is property name');
+
+// way 1
+const obj = {...};
+obj[prop] = "Hi";
+obj.prop = "Bye";
+
+console.log(obj.prop) // "Bye" 因為用點運運算元連線的屬性名稱會被當作字串
+console.log(obj[prop]) // "Hi"
+
+// way 2: Object Literals
+const obj = {
+    [prop]:"Hi"
+};
+
+// way 3: Object.defineProperty
+const obj = {...};
+Object.defineProperty(obj, prop, {value: 'Hi'});
 ```
 
 ## 引用型別
