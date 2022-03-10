@@ -18,8 +18,9 @@
 * [正規表示式(regular expression)](regular-expression.md)
 * [XML](xml/README.md)
   * [XBRL(財務報表語言)](xml/xbrl.md)
-  * [XSLT](xml/xslt.md)
   * [XML Schema](xml/xml-schema.md)
+  * [XSLT](xml/xslt.md)
+  * [XML Schema](xml/xml-schema-1.md)
   * [XPath](xml/xpath.md)
 
 ## javascript與nodejs
