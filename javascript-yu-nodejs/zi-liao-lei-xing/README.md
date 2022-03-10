@@ -679,6 +679,43 @@ let mapResult = numbers.map((item, index, array) => item * 2);
 console.log(mapResult) // 2,4,6,8,10,8,6,4,2
 ```
 
+### Array Iterator (陣列迭代器物件)
+
+在遍歷實體的每個元素後，產生新的陣列迭代器物件。對這個物件就能使用 next() for ... of 等特性可以使用。根據回傳的內容不同有以下三個方法可使用
+
+* Array.prototype.entries(): 回傳元素的 key/value pair&#x20;
+* Array.prototype.keys(): 回傳元素的 key 值&#x20;
+* Array.prototype.values(): 回傳元素的 value 值
+
+```javascript
+const arr = ["a", "b", "c"];
+
+const entIterator = arr.entries();
+const keyIterator = arr.keys();
+const valIterator = arr.values();
+
+for (let e of entIterator) {
+  console.log(`use arr.entries(): ${e}`);
+}
+// use arr.entries(): 0,a
+// use arr.entries(): 1,b
+// use arr.entries(): 2,c
+
+for (let e of keyIterator) {
+  console.log(`use arr.keys(): ${e}`);
+}
+// use arr.keys(): 0
+// use arr.keys(): 1
+// use arr.keys(): 2
+
+for (let e of valIterator) {
+  console.log(`use arr.values(): ${e}`);
+}
+// use arr.values(): a
+// use arr.values(): b
+// use arr.values(): c
+```
+
 ### Function
 
 函數實際上是物件，每個函數都是 Function類型的實例，而 Function也有屬性和方法，跟其他引用類型一樣。函數存在三種常見的表達方式：
