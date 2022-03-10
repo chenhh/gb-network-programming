@@ -45,6 +45,75 @@ console.log(0/0);   // NaN
 console.log(-0/+0); // NaN
 ```
 
+#### Number.MIN\_SAFE\_INTEGER／Number.MAX\_SAFE\_INTEGER
+
+為了方便，不需再經過數學運算取得，在Number物件中新增安全最大正整數與安全最小負整數的靜態屬性，分別為正負2的53次方減1。
+
+```javascript
+Number.MAX_SAFE_INTEGER // 9007199254740991
+Number.MIN_SAFE_INTEGER // -9007199254740991
+```
+
+#### Number.NaN
+
+在ES5以前就有全域的屬性可以取得。不過在ES2015後擴充成為Number物件裡的靜態屬性。
+
+#### Number.isSafeInteger(value)
+
+判斷數值是否為落在安全整數範圍內的整數，回傳結果為布林值。
+
+```javascript
+Number.isSafeInteger(Number.MAX_SAFE_INTEGER) // true
+Number.isSafeInteger(Number.MAX_SAFE_INTEGER+1) // false
+```
+
+#### Number.isInteger(value)
+
+判斷數值是否為整數，回傳結果為布林值。
+
+```javascript
+Number.isInteger(25) //true
+Number.isInteger(-88) //true
+Number.isInteger(0) //true
+Number.isInteger(3.14) //false
+Number.isInteger(-8.2544) //false
+```
+
+在ES2015後，鼓勵是以模組化的方式開發，其中就包含降低全域方法的使用。所以像是parseInt()、parseFloat()和isNaN()，在Number物件裡也有實現同樣的方法。
+
+#### Number.parseInt(value, radix)
+
+將輸入的字串轉成整數。如果無法轉為數值，則回傳NaN。 radix指的是從2 \~ 36的進位系統指定。
+
+```javascript
+Number.parseInt('-532');  //-532
+Number.parseInt('  3  ');  //3
+Number.parseInt('NaN');  //NaN
+Number.parseInt('true');  //NaN
+```
+
+#### Number.parseFloat(value)
+
+將輸入的字串轉成浮點數。如果無法轉為數值，則回傳NaN。
+
+```javascript
+Number.parseFloat('-532.2546');  //-532.2546
+Number.parseFloat('  3.14  ');  //3.14
+Number.parseFloat('NaN');  //NaN
+Number.parseFloat('true');  //NaN
+```
+
+#### Number.isNaN(value)
+
+判斷數值是否為NaN，回傳結果為布林值。
+
+```javascript
+Number.isNaN(NaN) // true
+Number.isNaN('NaN') // false
+Number.isNaN(true) // false
+Number.isNaN(88) // false
+```
+
 ### String
 
 字串可以使用雙引號（"）、單引號（'）或反引號（\`）標示。
