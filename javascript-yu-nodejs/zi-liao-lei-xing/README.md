@@ -398,6 +398,116 @@ let person = {
 };
 ```
 
+### 變數名稱填入賦值
+
+當填入變數名稱，其名稱會成為屬性名稱，而變數的值成為屬性值。
+
+```javascript
+let name = 'ECMAScript 關鍵 30 天';
+let author = 'Yuri';
+
+const data = { name, author };
+// { name: "ECMAScript 關鍵 30 天", lead: "Yuri"}
+```
+
+也可直接在屬性名稱後加（）｛｝新增函式。
+
+```javascript
+function sayHi() {
+    console.log('Say Hi! ');
+}
+
+const data1 = { name, lead, sayHi };
+const data2 = {
+    sayBye() {
+        console.log('Say Bye! ');
+    },
+};
+```
+
+### 動態屬性名稱
+
+屬性名稱以\[variable]中括號包覆變數的形式，動態決定屬性名稱。
+
+```javascript
+const platforms = ['FB', 'IG', 'LINE'];
+let myObject = {};
+
+platforms.map((name, index) => (myObject[`sns_${s}`] = index));
+
+console.log(myObject);
+// {
+//   sns_FB: 0
+//   sns_IG: 1
+//   sns_LINE: 2
+// }
+```
+
+### 物件的解構賦值（Destructuring Assignment）
+
+解構賦值是ES2015的新特性，只需要一行表示式，就可以把物件中的成員個別指派到跟鍵相同的變數，方便後續的存取。寫法上是將等號左邊的變數排列在物件中，等號右邊則是目標物件。
+
+```javascript
+const bookData = {
+    name: 'ECMAScript 關鍵 30 天',
+    author: 'Yuri',
+    publish: '博碩',
+};
+
+const { name } = bookData;
+console.log(name); // ECMAScript 關鍵 30 天
+```
+
+### 物件的靜態方法
+
+#### Object.is(value1, value2)
+
+比較兩個值是否相等。回傳布林值。在 ES5 中，比較兩個值相等需要靠 `==` 和 `===`(嚴格等於) 運算元來比較，可是這些運算元各自有些不合理的地方：
+
+* `==`: 會自動轉換型別 e.g. `1 == '1' //true`&#x20;
+* `===`: NaN不等於自己 e.g. `NaN === NaN //false` ，+0 等於 -0 e.g. `0 === -0 //true`
+
+因此在 ES2015 中，有在 Object 底下新增一個靜態方法 Object.is 為比較相等提供比較正確的方式。以下列出在 Object.is 中會回 true 的情況：
+
+* 兩者都是 undefined / null / NaN / true / false / +0 / -0&#x20;
+* 兩者為完全相等的非零數值 / 字串&#x20;
+* 兩者參考到同一個物件 / 陣列
+
+```javascript
+const arr = [1, 2, 3];
+const _arr1 = arr,
+  _arr2 = arr;
+const obj = { name: "One Punch Man" };
+const _obj1 = obj,
+  _obj2 = obj;
+
+Object.is(_arr1, _arr2); //true
+Object.is(_obj1, _obj2); //true
+Object.is([1, 2, 3], [1, 2, 3]); //false
+Object.is({ name: "One Punch Man" }, { name: "One Punch Man" }); //false
+```
+
+#### Object.assign(target, obj1, obj2, ...)
+
+複製所有傳入物件的可列舉屬性，併合併到一個目標物件中。回傳被合併過後的目標物件。
+
+什麼是可列舉屬性呢? 物件的屬性有分為以下兩種：
+
+* 存在於 prototype: 屬於不可列舉的屬性
+* 存在於實體: 如果沒特別設定，一般屬於可列舉的屬性
+
+要注意的地方是，目標物件同時也會被修改到。如果希望目標物件不被修改到，第一個引數改傳入 {}。
+
+```javascript
+const target = { a: 1, b: 2 };
+const target1 = { a: 1, b: 2 };
+const source = { b: 4, c: 5 };
+const returnedTarget = Object.assign(target, source);
+const returnedTarget1 = Object.assign({}, target, source);
+console.log(target); // { a: 1, b: 4, c: 5 }
+console.log(target1); // {a: 1, b: 2}
+```
+
 ### Array
 
 JavaScript陣列是一組有序的資料，但跟其他語言不同的是，陣列中每個槽位可以存儲**任意類型**的資料。並且，陣列也是動態大小的，會隨著資料新增而自動增長。
