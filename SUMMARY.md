@@ -24,16 +24,18 @@
 
 ## javascript與nodejs
 
+* [Javascript與ECMAScript](javascript-yu-nodejs/javascript-yu-ecmascript.md)
 * [資料類型](javascript-yu-nodejs/zi-liao-lei-xing/README.md)
   * [類型轉換機制](javascript-yu-nodejs/zi-liao-lei-xing/lei-xing-zhuan-huan-ji-zhi.md)
   * [== 和 ===區別](javascript-yu-nodejs/zi-liao-lei-xing/he-qu-bie.md)
-  * [Page 1](javascript-yu-nodejs/zi-liao-lei-xing/page-1.md)
+  * [變數宣告與作用域](javascript-yu-nodejs/zi-liao-lei-xing/bian-shu-xuan-gao-yu-zuo-yong-yu.md)
 * [瀏覽器裡的 JavaScript](javascript-yu-nodejs/liu-lan-qi-li-de-javascript.md)
 * [事件驅動](javascript-yu-nodejs/shi-jian-qu-dong.md)
 * [FAQ](javascript-yu-nodejs/faq.md)
 * [Node.js](javascript-yu-nodejs/node.js/README.md)
   * [webpack](javascript-yu-nodejs/node.js/webpack.md)
   * [gulp](javascript-yu-nodejs/node.js/gulp.md)
+  * [ESLint](javascript-yu-nodejs/node.js/eslint.md)
 
 ## TYPESCRIPT
 
