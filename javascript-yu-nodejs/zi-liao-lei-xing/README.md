@@ -173,7 +173,7 @@ console.log(stringValue.substr(3, 7)); // "lo worl"
 這裡改的意思也不是改變原字串，而是創建字串的一個副本，再進行操作。常見的有：
 
 * trim()、trimLeft()、trimRight()
-* repeat()
+* String.prototype.repeat(count)
 * padStart()、padEnd()
 * toLowerCase()、 toUpperCase()
 
@@ -215,8 +215,9 @@ console.log(stringValue.toLowerCase()); // "hello world"
 
 * chatAt()
 * indexOf()
-* startWith()
-* includes()
+* String.prototype.startsWith(target, position)
+* String.prototype.endsWith(target, length)
+* String.prototype.includes(target, position)
 
 charAt() 返回給定索引位置的字元，由傳給方法的整數參數指定。
 
@@ -282,6 +283,36 @@ replace() 接收兩個參數，第一個參數為匹配的內容，第二個參�
 let text = "cat, bat, sat, fat";
 let result = text.replace("at", "ond");
 console.log(result); // "cond, bat, sat, fat"
+```
+
+## 樣板字面值（Template Literals）
+
+這是ES2015中嶄新的特性。透過\`\`包覆，就能將運算式或變數和字串結合起來。另外也能支援字串的換行，成為多行字串。
+
+```javascript
+// ES5
+var x=1, y=2;
+const resultStr = "x加y等於：" + (x + y) + "。";
+
+// ES2015
+let x=1, y=2;
+const resultStr = `x加y等於：${x + y}。`;
+```
+
+```javascript
+// ES5
+// 需要在換行處加 \n
+console.log("我最愛的動畫是: \n"+"One Punch Man!!");
+
+//ES2015
+console.log(`我最愛的動畫是:
+One Punch Man!!
+`);
+
+/* output:
+我最愛的動畫是:
+One Punch Man!!
+*/
 ```
 
 ### Boolean
@@ -374,6 +405,52 @@ JavaScript陣列是一組有序的資料，但跟其他語言不同的是，陣�
 ```javascript
 let colors = ["red", 2, {age: 20 }]
 colors.push(2)
+```
+
+### array建構方法
+
+* from(obj, mapFn, thisArg)
+* of(element1, element2, ...)
+* fill(value, startIndex, endIndex)
+
+#### Array.from(obj, mapFn, thisArg)
+
+將 類陣列(array-like) 或 可迭代(iterable) 的物件，轉換成陣列，並回傳新的實體。
+
+* 類陣列顧名思義就是很像陣列，像是會有 length 的屬性及索引化的元素，但卻不是陣列的物件。例如:字串、NodeList 等。
+* 而可迭代(iterable)的物件像是下一篇會提到的 Map 和 Set 這種物件，可以透過迭代的方式取到元素。
+
+將這些物件轉換成陣列的目的，通常是要對這些物件使用 Array 提供的 API 進行操作，像較常見的是使用 map。 因此在第二個選擇性的引數 mapFn，可以帶入 map 函式來遍歷元素；第三個選擇性的引數 thisArg 則是指定 mapFn 的 this 物件。
+
+```javascript
+const str = "ABCDE";
+
+const arr1 = Array.from(str, (chara) => chara.repeat(3));
+// 等同於以下寫法
+const arr2 = Array.from(str).map((chara) => chara.repeat(3));
+
+// output:  ["AAA", "BBB", "CCC", "DDD", "EEE"]
+```
+
+#### Array.of(element1, element2, ...)
+
+為引數裡的元素們建立陣列，並回傳新的實體。通常至少為一個以上。
+
+```javascript
+Array.of(1, 2, 3); // [1, 2, 3]
+Array.of("man"); // ['man']
+Array.of(true, null, undefined, 1); // [true, null, undefined, 1]
+```
+
+#### Array.prototype.fill(value, startIndex, endIndex)
+
+將陣列中的第一個到最後一個元素，以 value 填入。後面兩個選擇性引數可決定起始索引跟結束索引。這個方法並不會回傳新的陣列，而是修改原來的陣列，使用上要小心。
+
+```javascript
+let arr = [1, 2, 3];
+arr.fill(4); // [4, 4, 4]
+arr.fill(5, 1); // [1, 5, 5]
+arr.fill(6, 2, 3); // [4, 5, 6]
 ```
 
 ### array常用新增方法
@@ -472,23 +549,28 @@ concole.log(colors3); // green,blue,yellow
 
 * indexOf()
 * includes()
-* find()
+* Array.prototype.find(Fn)
+* Array.prototype.findIndex(Fn)
 
-indexOf()返回要查詢的元素在陣列中的位置，如果沒找到則返回 -1。
+#### indexOf()返回要查詢的元素在陣列中的位置，如果沒找到則返回 -1。
 
 ```javascript
 let numbers = [1, 2, 3, 4, 5, 4, 3, 2, 1];
 numbers.indexOf(4) // 3
 ```
 
-includes()返回要查詢的元素在數組中的位置，找到返回true，否則false。
+#### includes()返回要查詢的元素在數組中的位置，找到返回true，否則false。
 
 ```javascript
 let numbers = [1, 2, 3, 4, 5, 4, 3, 2, 1];
 numbers.includes(4) // true
 ```
 
-find()返回第一個匹配的元素。
+#### find(Fn)返回第一個匹配的元素。
+
+#### findIndex(Fn)返回第一個匹配的元素的索引。
+
+使用測試函式 Fn 依序遍歷 ary，如果有第一個符合測試函式的元素，則回傳元素本身。如果都沒有符合的，則回傳 undefined。
 
 ```javascript
 const people = [
