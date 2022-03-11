@@ -37,6 +37,7 @@
   * [webpack](javascript-yu-nodejs/node.js/webpack.md)
   * [gulp](javascript-yu-nodejs/node.js/gulp.md)
   * [ESLint](javascript-yu-nodejs/node.js/eslint.md)
+  * [babel](javascript-yu-nodejs/node.js/babel.md)
 
 ## TYPESCRIPT
 
