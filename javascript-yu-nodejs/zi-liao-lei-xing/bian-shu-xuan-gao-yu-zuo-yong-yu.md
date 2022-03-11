@@ -10,7 +10,7 @@
 
 ## var 與 let 宣告變數的主要差別
 
-<mark style="color:red;">建議：在撰寫指令碼的日常中，let可以幾乎完美替代var</mark>。
+<mark style="color:red;">建議：在撰寫指令碼的日常中，let(從ES6支援)可以幾乎完美替代var</mark>。
 
 <mark style="color:red;">簡單的說：作用域不一樣，var的作用域在函式 (function) 裡，let的作用域則是在區塊 (block) 裡</mark>。
 
@@ -46,6 +46,43 @@ console.log(s)
   console.log(already); //yes
 }
 ```
+
+### var異常：for-loop處理回撥函式(callback function)
+
+```javascript
+for ( var i = 0 ; i < 3 ; i++ ) {
+	setTimeout( function() { console.log(i) } , 1000 );
+}
+//3
+//3
+//3
+```
+
+setTimeout是一個會去註冊一個callback function，1秒後執行。在作用域沒有管控好的狀況下，loop裡頭的非同步事件會去註冊起來，且使用var宣告的變數仍然會直到 i = 3 時才停止(然而這只是幾個瞬間的事)。
+
+解法1：closure
+
+```javascript
+for( var i = 0 ; i < 3 ; i++ ){
+	( function (j) {
+		//function scope
+		setTimeout(function(){ console.log(j) })
+	} ( i )) // 把i傳進去這個閉包
+}
+```
+
+解法2：用let宣告變數
+
+```javascript
+for ( let k = 0 ; k <3 ; k++ ){
+	setTimeout( function(){ console.log(k) } , 1000 ) ;
+}
+//0
+//1
+//2
+```
+
+### var異常：變數提升(hoisting)
 
 ## 提升(Hoisting)
 
@@ -115,3 +152,4 @@ console.log(name, age, hobby, country); //yuri 20 undefined Taiwan
 * J[avaScript Visualized: the JavaScript Engine](https://dev.to/lydiahallie/javascript-visualized-the-javascript-engine-4cdf)
 * [JavaScript Visualized: Generators and Iterators](https://dev.to/lydiahallie/javascript-visualized-generators-and-iterators-e36)
 * [JavaScript Visualized: Promises & Async/Await](https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke)
+* [\[JavaScript\] 你應該使用 let 而不是 var 的 3 個重要理由](https://realdennis.medium.com/%E6%87%B6%E4%BA%BA%E5%8C%85-javascript%E4%B8%AD-%E4%BD%BF%E7%94%A8let%E5%8F%96%E4%BB%A3var%E7%9A%843%E5%80%8B%E7%90%86%E7%94%B1-f11429793fcc)
