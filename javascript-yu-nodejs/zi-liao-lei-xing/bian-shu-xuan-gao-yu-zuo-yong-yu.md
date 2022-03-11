@@ -8,6 +8,43 @@
 
 相反地，如果變數沒有被任何區塊包覆，那麼它的作用域就是整個程式本身，這樣的變數就被稱為<mark style="color:red;">全域變數(global variable)</mark>。
 
+## var 與 let 宣告變數的主要差別
+
+<mark style="color:red;">簡單的說：作用域不一樣，var的作用域在函式 (function) 裡，let的作用域則是在區塊 (block) 裡</mark>。
+
+```javascript
+if(true){
+  //Start of Block scope
+  let b = 'Hi I am in Block';
+  //End of Block scope
+}
+console.log(b);
+//ReferenceError 
+
+(function(){
+  var s = 'Hi I am in Function';
+}())
+console.log(s) 
+//ReferenceError 
+```
+
+<mark style="color:red;">var 在作用域可以被重複宣告， let / const 在作用域內重複宣告則是會報錯，暫時性死區</mark>。因此在沒有let宣告時，當時很多 library / 框架要用閉包 (closure) 去把var宣告的變數包起來。
+
+```javascript
+{
+  let medium = 'good!';
+  let medium = 20;
+  //SyntaxError: Identifier 'medium' has already been declared
+}
+
+//vs
+{
+  var already = 'no';
+  var already = 'yes';
+  console.log(already); //yes
+}
+```
+
 ## 提升(Hoisting)
 
 在解析階段時，變數的宣告都會先被放入記憶體中。在執行階段時，就不會因為參考不到變數就出現錯誤。

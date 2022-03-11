@@ -20,3 +20,7 @@ JavaScript 所採用的標準是 ECMAScript，自 2012 年起，所有現代的�
 
 * [\[MDN\] Javascript](https://developer.mozilla.org/zh-TW/docs/Web/JavaScript)
 * [ECMA-262](https://www.ecma-international.org/publications-and-standards/standards/ecma-262/)
+* [\[W3School\] Javascript tutorial](https://www.w3schools.com/js/default.asp)
+* [Browser ECMAScript相容列表](https://kangax.github.io/compat-table/es6/)
+* [\[iT邦\]從ES到ESNext - 30天輕鬆掌握ECMAScript 系列](https://ithelp.ithome.com.tw/users/20110962/ironman/3303)
+* [\[鐵人賽\] 深入現代前端開發 系列](javascript-yu-ecmascript.md#jian-jie)
