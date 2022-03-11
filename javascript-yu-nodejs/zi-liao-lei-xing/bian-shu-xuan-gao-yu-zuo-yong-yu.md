@@ -10,6 +10,8 @@
 
 ## var 與 let 宣告變數的主要差別
 
+<mark style="color:red;">建議：在撰寫指令碼的日常中，let可以幾乎完美替代var</mark>。
+
 <mark style="color:red;">簡單的說：作用域不一樣，var的作用域在函式 (function) 裡，let的作用域則是在區塊 (block) 裡</mark>。
 
 ```javascript
