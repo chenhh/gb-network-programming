@@ -119,3 +119,7 @@ if(obj.x === null || obj.x === undefined) {
 ```
 
 使用相等操作符（==）的寫法明顯更加簡潔了。所以，除了在比較對象屬性為null或者undefined的情況下，我們可以使用相等操作符（==），其他情況建議一律使用全等操作符（===）。
+
+## 參考資料
+
+* [Oh My Dear JavaScript Bizarre behaviors in JavaScript(比較運算子的異常行為表格)](https://thomas-yang.me/projects/oh-my-dear-js/)
