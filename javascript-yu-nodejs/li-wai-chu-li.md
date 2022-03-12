@@ -23,3 +23,8 @@ try {
     alert('try catch 區塊結束');
 }
 ```
+
+catch 區塊會接受一個參數，代表錯誤物件 (Error Object)，錯誤物件有兩個屬性：
+
+* `name` 表示錯誤類型，例如 "ReferenceError" 。
+* `message` 說明為什麼錯誤的文字訊息。
