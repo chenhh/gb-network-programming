@@ -53,6 +53,45 @@ let obj2 = {name:"xxx"}
 let result1 = (obj1 == obj2 ); // false
 ```
 
+```javascript
+var a = 10;
+var b = 100;
+// 同類型的比較沒有問題
+console.log( a == b );        // false
+console.log( a == 10 );       // true
+
+// 不同類型的比較會自動轉型
+var a = 10;
+var b = "10";
+console.log( a == b );        // true
+
+true == 'true'      // false
+false == 'false'    // false
+
+false == 0    // true
+true == 1     // true
+
+[] == []      // false
+[] == ![]     // true
+
+[] == ''      // true
+[] == 0       // true
+
+[''] == ''    // true
+[0] == 0      // true
+
+[0] == ''     // false
+[''] == 0     // true
+
+null == undefined   // true
+
+[null] == ''        // true
+[null] == 0         // true
+
+[undefined] == ''   // true
+[undefined] == 0    // true
+```
+
 ## 全等(===)操作符
 
 全等操作符由 3 個等於號（ === ）表示，只有兩個操作數在不轉換的前提下相等才返回 true。即類型相同，值也需相同。

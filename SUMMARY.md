@@ -30,6 +30,7 @@
   * [類型轉換機制](javascript-yu-nodejs/zi-liao-lei-xing/lei-xing-zhuan-huan-ji-zhi.md)
   * [== 和 ===區別](javascript-yu-nodejs/zi-liao-lei-xing/he-qu-bie.md)
   * [變數宣告與作用域](javascript-yu-nodejs/zi-liao-lei-xing/bian-shu-xuan-gao-yu-zuo-yong-yu.md)
+* [函數](javascript-yu-nodejs/han-shu.md)
 * [瀏覽器裡的 JavaScript](javascript/liu-lan-qi-li-de-javascript.md)
 * [事件驅動](javascript/shi-jian-qu-dong.md)
 * [FAQ](javascript/faq.md)
