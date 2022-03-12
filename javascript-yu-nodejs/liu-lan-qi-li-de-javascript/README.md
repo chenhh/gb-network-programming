@@ -20,7 +20,7 @@
 
 ## script標籤放置位置的區別
 
-![瀏覽器分析 HTML 檔的順序](../.gitbook/assets/webflow-min.png)
+![瀏覽器分析 HTML 檔的順序](../../.gitbook/assets/webflow-min.png)
 
 當瀏覽器在 head之間遇到script標籤時，就會暫停解析網頁，並且「立即」執行script裡的內容，直到 script 執行完畢後再繼續解析網頁。
 
@@ -40,7 +40,7 @@ BOM 也有人非正式地稱它為 「Level 0 DOM」。 因為它在 DOM level 1
 
 ### BOM 的核心 window 物件
 
-![BOM與DOM物件](<../.gitbook/assets/bom\_dom-min (1).png>)
+![BOM與DOM物件](<../../.gitbook/assets/bom\_dom-min (1).png>)
 
 * BOM 的核心是 window 物件。而 window 物件提供的屬性主要為 document、location、navigator、screen、history 以及 frames。
 
@@ -92,7 +92,7 @@ window.alert(message);
 
 DOM (Document Object Model，檔案物件模型)，是一個將 HTML 檔案以樹狀的結構來表示的模型，而組合起來的樹狀圖，我們稱之為「DOM Tree」。
 
-![DOM Tree範例](../.gitbook/assets/dom\_tree-min.png)
+![DOM Tree範例](../../.gitbook/assets/dom\_tree-min.png)
 
 在最根部的地方，就是 document，就是 BOM 圖中 window 下面的那個。
 
@@ -169,4 +169,4 @@ DOM 節點為樹狀結構，有分層的概念，因此節點與節點之間的�
 * <mark style="color:red;">父子關係</mark>： 除了 document 之外，每一個節點都會有個上層的節點，我們通常稱之為「父節點」 (Parent node)，而相對地，從屬於自己下層的節點，就會稱為「子節點」(Child node)。
 * <mark style="color:red;">兄弟關係</mark>：有同一個「父節點」的節點，那麼他們彼此之間就是「兄弟節點」(Siblings node)。
 
-![DOM樹元素的階層關 ](<../.gitbook/assets/dom\_tree\_parent\_sibling-min (1).png>)
+![DOM樹元素的階層關 ](<../../.gitbook/assets/dom\_tree\_parent\_sibling-min (1).png>)
