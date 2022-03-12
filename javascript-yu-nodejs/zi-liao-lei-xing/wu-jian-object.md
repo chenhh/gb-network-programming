@@ -89,9 +89,13 @@ let me = {
     lastName: 'Lee',
     age: 30,
     fullName: function() {
-        return this.firstName + ' ' + this.lastName;
+        return `${this.firstName} ${this.lastName}`;
     }
 }
 ```
 
 this 是物件方法中可以使用的關鍵字，this 是一個物件參考，當物件在執行時，可以使用 this 來代表 "自己"。
+
+## 參考資料
+
+* [\[MDN\] Javascript內建物件](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects)
