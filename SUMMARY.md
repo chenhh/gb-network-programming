@@ -32,6 +32,7 @@
   * [變數宣告與作用域](javascript-yu-nodejs/zi-liao-lei-xing/bian-shu-xuan-gao-yu-zuo-yong-yu.md)
   * [物件(object)](javascript-yu-nodejs/zi-liao-lei-xing/wu-jian-object.md)
 * [函數](javascript-yu-nodejs/han-shu.md)
+* [例外處理](javascript-yu-nodejs/li-wai-chu-li.md)
 * [瀏覽器裡的 JavaScript](javascript/liu-lan-qi-li-de-javascript.md)
 * [事件驅動](javascript/shi-jian-qu-dong.md)
 * [FAQ](javascript/faq.md)
