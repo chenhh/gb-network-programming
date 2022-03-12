@@ -38,6 +38,8 @@
   * [gulp](javascript-yu-nodejs/node.js/gulp.md)
   * [ESLint](javascript-yu-nodejs/node.js/eslint.md)
   * [babel](javascript-yu-nodejs/node.js/babel.md)
+  * [d3js](javascript-yu-nodejs/node.js/d3js.md)
+  * [echarts](javascript-yu-nodejs/node.js/echarts.md)
 
 ## TYPESCRIPT
 
