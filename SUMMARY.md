@@ -37,8 +37,8 @@
   * [iterator and generator](javascript-yu-nodejs/hui-quan-yu-die-dai/iterator-and-generator.md)
 * [例外處理](javascript-yu-nodejs/li-wai-chu-li.md)
 * [瀏覽器裡的 JavaScript](javascript-yu-nodejs/liu-lan-qi-li-de-javascript/README.md)
+  * [事件驅動](javascript-yu-nodejs/liu-lan-qi-li-de-javascript/shi-jian-qu-dong.md)
   * [capturing, bubbling and delegation](javascript-yu-nodejs/liu-lan-qi-li-de-javascript/capturing-bubbling-and-delegation.md)
-* [事件驅動](javascript/shi-jian-qu-dong.md)
 * [FAQ](javascript/faq.md)
 * [Node.js](javascript-yu-nodejs/node.js/README.md)
   * [webpack](javascript-yu-nodejs/node.js/webpack.md)
@@ -47,6 +47,7 @@
   * [babel](javascript-yu-nodejs/node.js/babel.md)
   * [d3js](javascript-yu-nodejs/node.js/d3js.md)
   * [echarts](javascript-yu-nodejs/node.js/echarts.md)
+  * [jquery](javascript-yu-nodejs/node.js/jquery.md)
 
 ## TYPESCRIPT
 
