@@ -116,3 +116,22 @@ let num: number = u;
 
 // Type 'void' is not assignable to type 'number'.
 ```
+
+## 任意值 (any)
+
+任意值（Any）用來表示允許賦值為任意型別。如果是一個普通型別，在賦值過程中改變型別是不被允許的。
+
+```typescript
+// error, 不可轉型
+let myFavoriteNumber: string = 'seven';
+myFavoriteNumber = 7;
+F
+// index.ts(2,1): error TS2322: Type 'number' is not assignable to type 'string'.
+```
+
+但如果是 any 型別，則允許被賦值為任意型別。
+
+```typescript
+let myFavoriteNumber: any = 'seven';
+myFavoriteNumber = 7;
+```
