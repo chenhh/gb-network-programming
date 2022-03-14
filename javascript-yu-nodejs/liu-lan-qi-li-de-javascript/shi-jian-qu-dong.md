@@ -110,6 +110,30 @@ event object 有一個 preventDefault 方法用來取消瀏覽器預設的行為
 * 點選一個超連結後，會載入新的頁面&#x20;
 * 在表單輸入欄位中輸入 enter 會送出表單
 
+## 各種事件繫結的差異
+
+在 HTML 標籤內直接寫 JS（舊式寫法，不推薦） 容易被駭客植入惡意程式碼 。
+
+```html
+<input onclick="alert('say Hello')" type="button" 
+       class="btn" value="點選">
+```
+
+on-event 處理器：主要的缺點為一個事件只能繫結一個函式。如果用此方法在同一個事件上繫結兩個不同函式，會造成兩個函式都無法如預期般正確運作。
+
+事件監聽（新寫法，推薦）：addEventListener 跟 on-event 處理器的差別在於，前者可以在一個 DOM 上執行兩個以上的函式；如果是在 DOM 上使用後者，就只能繫結一個函式。
+
+```javascript
+let el = document.querySelector('.btn');
+el.addEventListener('click',function(e){
+  alert('Hello');
+},false)
+// addEventListener的第三個參數
+// false（事件氣泡，Event Bubbling）- 從指定元素往外層找
+// true（事件捕捉，Event Capuring）- 從最外面找到指定元素
+// 如果在監聽程式碼裡不寫第三個引數，則預設值是 false。
+```
+
 ## 常見的事件處理範例 (Examples)
 
 ### onclick event
