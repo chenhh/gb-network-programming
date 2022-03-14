@@ -1,4 +1,4 @@
-# callback hell
+# Promise與callback函數
 
 ## 回調函數(callback function)
 
@@ -346,3 +346,7 @@ greeting()
 
 // output: "Hello"
 ```
+
+## 參考資料
+
+* [JavaScript Promises：簡介](https://web.dev/promises/)

@@ -33,7 +33,7 @@
   * [物件(object)](javascript-yu-nodejs/zi-liao-lei-xing/wu-jian-object.md)
   * [原型鏈(prototype chain)](javascript-yu-nodejs/zi-liao-lei-xing/yuan-xing-lian-prototype-chain.md)
 * [函數](javascript-yu-nodejs/han-shu/README.md)
-  * [callback hell](javascript-yu-nodejs/han-shu/callback-hell.md)
+  * [Promise與callback函數](javascript-yu-nodejs/han-shu/promise-yu-callback-han-shu.md)
 * [迴圈與迭代](javascript-yu-nodejs/hui-quan-yu-die-dai/README.md)
   * [iterator and generator](javascript-yu-nodejs/hui-quan-yu-die-dai/iterator-and-generator.md)
 * [例外處理](javascript-yu-nodejs/li-wai-chu-li.md)
