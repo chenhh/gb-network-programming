@@ -49,6 +49,7 @@
   * [d3js](javascript-yu-nodejs/node.js/d3js.md)
   * [echarts](javascript-yu-nodejs/node.js/echarts.md)
   * [jquery](javascript-yu-nodejs/node.js/jquery.md)
+  * [electron](javascript-yu-nodejs/node.js/electron.md)
 
 ## TYPESCRIPT
 
