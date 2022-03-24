@@ -10,6 +10,26 @@ XPath 是W3C官方推薦的語言。 它定義了一種在XML文件中查找信�
 * 路徑表達式 - XPath提供強大的路徑表達式選擇XML文檔中的節點或節點列表。&#x20;
 * 標準函數 - XPath提供了豐富的標準函數庫，用於處理字符串值，數值，日期和時間比較，節點和QName操作，序列操作，布爾值等。
 
+| 說明         | XPath                                        | CSS Path                                |
+| ---------- | -------------------------------------------- | --------------------------------------- |
+| 直接子元素      | //div/a                                      | div > a                                 |
+| 子元素或後代元素   | //div//a                                     | div a                                   |
+| 以id定位      | //div\[@id="elid"]//a                        | div#elid a                              |
+| 以class定位   | //div\[@class="clsvalue"]//a                 | div.clsvalue a                          |
+| 同級弟弟元素     | /ul/li\[@class='first']/following-           | ul > li.first + li                      |
+| 屬性         | //form/input\[@name='username']              | form input\[name='username']            |
+| 多個屬性       | //input\[@name='username' and type='button'] | input \[name='username]\[type='button'] |
+| 第4個子元素     | /ul\[@id='list']//li\[4]                     | ul#list li:nth-child(4)                 |
+| 第1個子元素     | /ul\[@id='list']//li\[1]                     | ul#list li:first-child                  |
+| 最後1個子元素    | /ul\[@id='list']//li\[last()]                | ul#list li:last-child                   |
+| 屬性含含某字串    | //div\[contains(@title, 'Title')]            | div\[title\*="Title"]                   |
+| 屬性以某字串開頭   | //input\[starts-with(@name, 'user')]         | input\[name^="user"]                    |
+| 屬性以某字串結尾   | //input\[ends-with(@name, "name")]           | input\[name$="name"]                    |
+| text中包含某字串 | //div\[contains(text(), 'text')]             | NA                                      |
+| 元素有某屬性     | //div\[@title]                               | div\[title]                             |
+| 父節點        | //div/..                                     | NA                                      |
+| 同級哥哥節點     | //li/preceding-sibling::div\[1]              | NA                                      |
+
 
 
 * `//*`：扁平化所有元素。星號 (\*) 僅能表示未知的元素，但不能表示未知的層級。
