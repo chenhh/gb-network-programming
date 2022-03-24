@@ -88,6 +88,8 @@ let mystr: string;  //不給初始值
 
 ## 空值(void)
 
+某種程度上來說，void類型像是與any類型相反，它表示沒有任何類型。
+
 JavaScript 沒有空值（Void）的概念，在 TypeScript 中，<mark style="color:red;">可以用 void 表示沒有任何返回值的函數</mark>。
 
 ```typescript
@@ -133,6 +135,18 @@ let num: number = u;
 // Type 'void' is not assignable to type 'number'.
 ```
 
+## unknown
+
+當我們在寫應用的時候可能會需要描述一個我們還不知道其類型的變量。這些值可以來自動態內容，例如從用戶獲得，或者我們想在我們的 API 中接收所有可能類型的值。在這些情況下，我們想要讓編譯器以及未來的用戶知道這個變量可以是任意類型。這個時候我們會對它使用 unknown 類型。
+
+```typescript
+let notSure: unknown = 4;
+notSure = "maybe a string instead";
+
+// OK, definitely a boolean
+notSure = false;
+```
+
 ## 任意值 (any)
 
 任意值（Any）用來表示允許賦值為任意型別。如果是一個普通型別，在賦值過程中改變型別是不被允許的。
@@ -161,6 +175,35 @@ myvar=123;
 console.log(typeof myvar); // number
 myvar="123"
 console.log(typeof myvar); // string
+```
+
+當你只知道一部分資料的類型時，any類型也是有用的。 比如，你有一個陣列，它包含了不同的類型的數據：
+
+```typescript
+let list: any[] = [1, true, "free"];
+list[1] = 100;
+```
+
+## never
+
+<mark style="color:red;">never類型表示的是那些永不存在的值的類型</mark>。 例如，never類型是那些總是會拋出異常或根本就不會有返回值的函數表達式或箭頭函數表達式的返回值類型； 變量也可能是never類型，當它們被永不為真的類型保護所約束時。
+
+```typescript
+// 返回never的函數必須存在無法達到的終點
+function error(message: string): never {
+    throw new Error(message);
+}
+
+// 推斷的返回值類型為never
+function fail() {
+    return error("Something failed");
+}
+
+// 返回never的函數必須存在無法達到的終點
+function infiniteLoop(): never {
+    while (true) {
+    }
+}
 ```
 
 ## 陣列(array)
@@ -195,4 +238,104 @@ console.log(x[0].substr(1)); // ollo
 console.log(x[1]); // 10
 
 // 當訪問一個越界的元素時error
+// x[3] //error
 ```
+
+## 枚舉(enum)
+
+enum類型是對JavaScript標准資料類型的一個補充。 使用枚舉類型可以為一組資料賦予友好的名字。
+
+```typescript
+enum Color {Red, Green, Blue}
+let c: Color = Color.Green;
+```
+
+編譯後：
+
+```javascript
+"use strict";
+var Color;
+(function (Color) {
+    Color[Color["Red"] = 0] = "Red";
+    Color[Color["Green"] = 1] = "Green";
+    Color[Color["Blue"] = 2] = "Blue";
+})(Color || (Color = {}));
+let c = Color.Green;
+```
+
+預設情況下，從0開始為元素編號。 你也可以手動的指定成員的數值。 例如，我們將上面的例子改成從1開始編號：
+
+```typescript
+enum Color {Red = 1, Green, Blue}
+let c: Color = Color.Green;
+```
+
+編譯後：
+
+```javascript
+var Color;
+(function (Color) {
+    Color[Color["Red"] = 1] = "Red";
+    Color[Color["Green"] = 2] = "Green";
+    Color[Color["Blue"] = 3] = "Blue";
+})(Color || (Color = {}));
+var c = Color.Green;
+```
+
+或者，全部都採用手動賦值：
+
+```typescript
+enum Color {Red = 1, Green = 2, Blue = 4}
+let c: Color = Color.Green;
+```
+
+枚舉類型提供的一個便利是你可以由枚舉的值得到它的名字。 例如，我們知道數值為2，但是不確定它對映到Color裡的哪個名字，我們可以查詢相應的名字：
+
+```typescript
+enum Color {Red = 1, Green, Blue}
+let colorName: string = Color[2];
+
+console.log(colorName);  // 顯示'Green'因為上面代碼裡它的值是2
+```
+
+## Object
+
+<mark style="color:red;">object表示非原始類型，也就是除number，string，boolean，bigint，symbol，null或undefined之外的類型</mark>。使用object類型，就可以更好的表示像Object.create這樣的API。
+
+```typescript
+declare function create(o: object | null): void;
+
+create({ prop: 0 }); // OK
+create(null); // OK
+
+create(42); // Error
+create("string"); // Error
+create(false); // Error
+create(undefined); // Error
+```
+
+## 類型斷言
+
+有時候你會遇到這樣的情況，你會比TypeScript更瞭解某個值的詳細資訊。 通常這會發生在你清楚地知道一個實體具有比它現有類型更確切的類型。
+
+類型斷言好比其它語言裡的類型轉換，但是不進行特殊的數據檢查和解構。 它沒有運行時的影響，只是在編譯階段起作用。 TypeScript會假設你已經進行了必須的檢查。
+
+類型斷言有兩種形式。 其一是“尖括號”語法：
+
+```typescript
+let someValue: any = "this is a string";
+let strLength: number = (<string>someValue).length;
+```
+
+另一個為as語法：
+
+```typescript
+let someValue: any = "this is a string";
+let strLength: number = (someValue as string).length;
+```
+
+兩種形式是等價的。 至於使用哪個大多數情況下是憑個人喜好；然而，當你在TypeScript裡使用JSX時，只有as語法斷言是被允許的。
+
+## 關於 Number, String, Boolean, Symbol 和 Object
+
+我們很容易會認為 Number、 String、 Boolean、Symbol 以及 Object 這些類型和我們以上推薦的小寫版本的類型是一樣的。但這些類型不屬於語言的基本類型，並且幾乎在任何時候都不應該被用作一個類型。
