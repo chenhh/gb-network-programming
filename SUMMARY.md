@@ -55,7 +55,8 @@
 ## TYPESCRIPT
 
 * [簡介](typescript/jian-jie.md)
-* [資料類型](typescript/zi-liao-lei-xing.md)
+* [資料類型](typescript/zi-liao-lei-xing/README.md)
+  * [interface](typescript/zi-liao-lei-xing/interface.md)
 
 ## webassembly
 
