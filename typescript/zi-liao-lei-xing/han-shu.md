@@ -42,3 +42,19 @@ function add(x: number, y: number): number {
 
 let myAdd = function(x: number, y: number): number { return x + y; };
 ```
+
+### 完整函數類型
+
+下面讓我們寫出函數的完整類型。
+
+```typescript
+// 只要參數類型是匹配的，那麼就認為它是有效的函數類型，而不在乎參數名是否正確。
+let myAdd: (baseValue: number, increment: number) => number =
+    function(x: number, y: number): number { return x + y; };
+```
+
+函數類型包含兩部分：參數類型和返回值類型。 當寫出完整函數類型的時候，這兩部分都是需要的。 我們以參數列表的形式寫出參數類型，為每個參數指定一個名字和類型。 這個名字只是為了增加可讀性。
+
+第二部分是返回值類型。 <mark style="color:blue;">對於返回值，我們在函數和返回值類型之前使用(=>)符號，使之清晰明了</mark>。 如之前提到的，返回值類型是函數類型的必要部分，如果函數沒有返回任何值，你也必須指定返回值類型為void而不能留空。
+
+函數的類型只是由參數類型和返回值組成的。 函數中使用的捕獲變量不會體現在類型裡。 實際上，這些變量是函數的隱藏狀態並不是組成API的一部分。
