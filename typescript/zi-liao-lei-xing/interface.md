@@ -262,3 +262,212 @@ myArray[2] = "Mallory"; // error!
 ```
 
 ## class類型
+
+### 實現介面&#x20;
+
+<mark style="color:red;">介面描述了類的公共部分</mark>，而不是公共和私有兩部分。 它不會幫你檢查類是否具有某些私有成員。
+
+與 C# 或 Java 裡介面的基本作用一樣，TypeScript 也能夠用它來明確的強制一個類去符合某種格式。
+
+```typescript
+interface ClockInterface {
+  currentTime: Date;
+}
+
+class Clock implements ClockInterface {
+  currentTime: Date = new Date();
+  constructor(h: number, m: number) {}
+}
+```
+
+你也可以在介面中描述一個方法，在類裡實現它，如同下面的setTime方法一樣：
+
+```typescript
+interface ClockInterface {
+  currentTime: Date;
+  setTime(d: Date): void;
+}
+
+class Clock implements ClockInterface {
+  currentTime: Date = new Date();
+  setTime(d: Date) {
+    this.currentTime = d;
+  }
+  constructor(h: number, m: number) {}
+}
+```
+
+### 類靜態部分與實例部分的區別
+
+當你操作類和介面的時候，你要知道<mark style="color:red;">類是具有兩個類型的：靜態部分的類型和實例的類型</mark>。 你會注意到，當你用構造器簽名去定義一個介面並試圖定義一個類去實現這個介面時會得到一個錯誤：
+
+```typescript
+// Type 'Clock' provides no match for the 
+// signature 'new (hour: number, minute: number): any'.
+interface ClockConstructor {
+  new (hour: number, minute: number);
+}
+
+class Clock implements ClockConstructor {
+  currentTime: Date;
+  constructor(h: number, m: number) {}
+}
+```
+
+這裡因為當一個類實現了一個介面時，只對其實例部分進行類型檢查。 constructor 存在於類的靜態部分，所以不在檢查的范圍內。
+
+因此，我們應該直接操作類的靜態部分。 看下面的例子，我們定義了兩個介面，ClockConstructor為構造函數所用和ClockInterface為實例方法所用。 為了方便我們定義一個構造函數createClock，它用傳入的類型創建實例。
+
+因為createClock的第一個參數是ClockConstructor類型，在createClock(AnalogClock, 7, 32)裡，會檢查AnalogClock是否符合構造函數簽名。
+
+```typescript
+interface ClockConstructor {
+  new (hour: number, minute: number): ClockInterface;
+}
+interface ClockInterface {
+  tick(): void;
+}
+
+function createClock(
+  ctor: ClockConstructor,
+  hour: number,
+  minute: number
+): ClockInterface {
+  return new ctor(hour, minute);
+}
+
+class DigitalClock implements ClockInterface {
+  constructor(h: number, m: number) {}
+  tick() {
+    console.log("beep beep");
+  }
+}
+class AnalogClock implements ClockInterface {
+  constructor(h: number, m: number) {}
+  tick() {
+    console.log("tick tock");
+  }
+}
+
+let digital = createClock(DigitalClock, 12, 17);
+let analog = createClock(AnalogClock, 7, 32);
+```
+
+另一種簡單方式是使用類表達式：
+
+```typescript
+interface ClockConstructor {
+  new (hour: number, minute: number);
+}
+
+interface ClockInterface {
+  tick();
+}
+
+const Clock: ClockConstructor = class Clock implements ClockInterface {
+  constructor(h: number, m: number) {}
+  tick() {
+    console.log("beep beep");
+  }
+};
+```
+
+## 繼承介面
+
+和類一樣，介面也可以相互繼承。 這讓我們能夠從一個介面裡復製成員到另一個介面裡，可以更靈活地將介面分割到可重用的模組裡。
+
+```typescript
+interface Shape {
+  color: string;
+}
+
+interface Square extends Shape {
+  sideLength: number;
+}
+
+let square = {} as Square;
+square.color = "blue";
+square.sideLength = 10;
+```
+
+一個介面可以繼承多個介面，創建出多個介面的合成介面。
+
+```typescript
+interface Shape {
+  color: string;
+}
+
+interface PenStroke {
+  penWidth: number;
+}
+
+interface Square extends Shape, PenStroke {
+  sideLength: number;
+}
+
+let square = {} as Square;
+square.color = "blue";
+square.sideLength = 10;
+square.penWidth = 5.0;
+```
+
+## 混合類型
+
+先前我們提過，介面能夠描述 JavaScript 裡豐富的類型。 因為 JavaScript 其動態靈活的特點，有時你會希望一個物件可以同時具有上面提到的多種類型。
+
+一個例子就是，一個物件可以同時作為函數和物件使用，並帶有額外的屬性。
+
+```typescript
+interface Counter {
+  (start: number): string;
+  interval: number;
+  reset(): void;
+}
+
+function getCounter(): Counter {
+  let counter = function(start: number) {} as Counter;
+  counter.interval = 123;
+  counter.reset = function() {};
+  return counter;
+}
+
+let c = getCounter();
+c(10);
+c.reset();
+c.interval = 5.0;
+```
+
+## 介面繼承類
+
+<mark style="color:red;">當介面繼承了一個類類型時，它會繼承類的成員但不包括其實現</mark>。 就好像介面聲明了所有類中存在的成員，但並沒有提供具體實現一樣。 <mark style="color:red;">介面同樣會繼承到類的 private 和 protected 成員</mark>。 這意味著當你創建了一個介面繼承了一個擁有私有或受保護的成員的類時，這個介面類型只能被這個類或其子類所實現（implement）。
+
+```typescript
+class Control {
+  private state: any;
+}
+
+// SelectableControl包含了Control的所有成員，包括私有成員state。
+// 因為state是私有成員，所以只能夠是Control的子類們才能實現SelectableControl介面。
+interface SelectableControl extends Control {
+  select(): void;
+}
+
+// Button和TextBox類是SelectableControl的子類
+//（因為它們都繼承自Control並有select方法）
+class Button extends Control implements SelectableControl {
+  select() {}
+}
+
+class TextBox extends Control {
+  select() {}
+}
+
+// 。而對於 ImageControl 類，它有自身的私有成員 state 而不是通過繼承 Control 得來的，
+// 所以它不可以實現 SelectableControl 。
+class ImageControl implements SelectableControl {
+// Error: Class 'ImageControl' incorrectly implements interface 'SelectableControl'.
+//  Types have separate declarations of a private property 'state'.
+  private state: any;
+  select() {}
+}
+```
