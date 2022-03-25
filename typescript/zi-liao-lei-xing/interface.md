@@ -166,3 +166,99 @@ let mySquare = createSquare(squareOptions);
 ```
 
 上面的方法只在squareOptions和SquareConfig之間有共同的屬性時才好用。 在這個例子中，這個屬性為width。如果變量間不存在共同的對象屬性將會報錯。
+
+## 函數類型
+
+介面能夠描述 JavaScript 中物件擁有的各種各樣的外形。 除了描述帶有屬性的普通物件外，介面也可以描述函數類型。
+
+為了使用介面表示函數類型，我們需要給介面定義一個調用簽名。 它就像是一個只有參數列表和返回值類型的函數定義。參數列表裡的每個參數都需要名字和類型。
+
+這樣定義後，我們可以像使用其它介面一樣使用這個函數類型的介面。 下例展示了如何創建一個函數類型的變量，並將一個同類型的函數賦值給這個變量。函數的參數會逐個進行檢查，要求對應位置上的參數類型是相容的。&#x20;
+
+```typescript
+interface SearchFunc {
+  // 調用簽名，輸入為(string, string)，回傳類型為boolean
+  (source: string, subString: string): boolean;
+}
+
+let mySearch: SearchFunc;
+// 對於函數類型的類型檢查來說，函數的參數名不需要與介面裡定義的名字相匹配。 
+mySearch = function(src: string, subString: string) {
+  let result = src.search(subString);
+  return result > -1;
+};
+
+let mySearch2: SearchFunc;
+// 如果你不想指定類型，TypeScript 的類型系統會推斷出參數類型，
+// 因為函數直接賦值給了SearchFunc類型變量。 
+// 函數的返回值類型是通過其返回值推斷出來的（此例是false和true）。
+mySearch2 = function(src, sub) {
+  let result = src.search(sub);
+  return result > -1;
+};
+```
+
+## 可索引的類型
+
+與使用介面描述函數類型差不多，我們也可以描述那些能夠“通過索引得到”的類型，比如a\[10]或ageMap\["daniel"]。 可索引類型具有一個\_索引簽名\_，它描述了對象索引的類型，還有相應的索引返回值類型。
+
+```typescript
+//  這個索引簽名表示了當用number去索引StringArray時會得到string類型的返回值。
+interface StringArray {
+  [index: number]: string;
+}
+
+let myArray: StringArray;
+myArray = ["Bob", "Fred"];
+
+let myStr: string = myArray[0];
+```
+
+Typescript 支援兩種索引簽名：字串和數字。 可以同時使用兩種類型的索引，但是數字索引的返回值必須是字串索引返回值類型的子類型。 這是因為當使用number來索引時，JavaScript 會將它轉換成string然後再去索引對象。 也就是說用100（一個number）去索引等同於使用"100"（一個string）去索引，因此兩者需要保持一致。
+
+```typescript
+class Animal {
+  name: string;
+}
+class Dog extends Animal {
+  breed: string;
+}
+
+// 錯誤：使用數值型的字串索引，有時會得到完全不同的Animal!
+interface NotOkay {
+  [x: number]: Animal;
+  [x: string]: Dog;
+}
+```
+
+字串索引簽名能夠很好的描述dictionary模式，並且它們也會確保所有屬性與其返回值類型相匹配。 因為字串索引聲明了`obj.property`和`obj["property"]`兩種形式都可以。 下面的例子裡，name的類型與字串索引類型不匹配，所以類型檢查器給出一個錯誤提示：
+
+```typescript
+interface NumberDictionary {
+  [index: string]: number;
+  length: number; // 可以，length是number類型
+  name: string; // 錯誤，`name`的類型與索引類型返回值的類型不匹配
+}
+```
+
+但如果索引簽名是包含屬性類型的聯合類型，那麼使用不同類型的屬性就是允許的。
+
+```typescript
+interface NumberOrStringDictionary {
+   [index: string]: number | string;
+   length: number;    // ok, length is a number
+   name: string;      // ok, name is a string
+}
+```
+
+最後，你可以將索引簽名設置為只讀，這樣就防止了給索引賦值：
+
+```typescript
+interface ReadonlyStringArray {
+  readonly [index: number]: string;
+}
+let myArray: ReadonlyStringArray = ["Alice", "Bob"];
+myArray[2] = "Mallory"; // error!
+```
+
+## class類型
