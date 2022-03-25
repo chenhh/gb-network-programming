@@ -112,3 +112,57 @@ a = ro as number[];
 最簡單判斷該用readonly還是const的方法是看要把它做為變量使用還是做為一個屬性。 做為變量使用的話用const，若做為屬性則使用readonly。
 
 ### 額外的屬性檢查
+
+在[介面是如何工作](interface.md#jie-mian-shi-ru-he-gong-zuo)中，TypeScript 讓我們傳入`{ size: number; label: string; }`到僅期望得到`{ label: string; }`的函數參數裡。 我們已經學過了可選屬性，並且知道他們在“option bags”模式裡很有用。
+
+然而，直接將這兩者結合的話會有問題。比如，拿以下createSquare例子來說，TypeScript 會認為這段程式碼可能存在 bug。 物件字面量會被特殊對待而且會經過**額外屬性檢查**，當將它們賦值給變量或作為參數傳遞的時候。 如果一個物件字面量存在任何“**目標類型**”不包含的屬性時，編譯器會給出錯誤。
+
+```typescript
+interface SquareConfig {
+  color?: string;
+  width?: number;
+}
+
+function createSquare(config: SquareConfig): { color: string; area: number } {
+  // ...
+}
+// 傳入函數參數物件有屬性colour, 而interface中只能有color與width，所以會報錯
+let mySquare = createSquare({ colour: "red", width: 100 });
+
+//interface4.ts:10:31 - error TS2345: Argument of type '{ colour: string; width: number; }' is not assignable to parameter of type 'SquareConfig'.
+// Object literal may only specify known properties, but 'colour' does not exist in type 'SquareConfig'. Did you mean to write 'color'?
+// let mySquare = createSquare({ colour: "red", width: 100 });
+```
+
+繞開這些檢查非常簡單。
+
+#### 解法1：使用類型斷言
+
+```javascript
+let mySquare = createSquare({ width: 100, opacity: 0.5 } as SquareConfig);
+```
+
+#### 解法2：新增一個字串索引簽名
+
+然而，最佳的方式是能夠新增一個字串索引簽名，前提是你能夠確定這個對象可能具有某些做為特殊用途使用的額外屬性。 如果SquareConfig帶有上面定義的類型的color和width屬性，並且<mark style="color:blue;">還會帶有任意數量的其它屬性</mark>，那麼我們可以這樣定義它：
+
+```typescript
+interface SquareConfig {
+  color?: string;
+  width?: number;
+  [propName: string]: any;
+}
+```
+
+在這我們要表示的是SquareConfig可以有任意數量的屬性，並且只要它們不是color和width，那麼就無所謂它們的類型是什麼。
+
+#### 解法3: 將物件設給另一個變數
+
+還有最後一種跳過這些檢查的方式，這可能會讓你感到驚訝，它就是將這個對象賦值給一個另一個變量： 因為squareOptions不會經過額外屬性檢查，所以編譯器不會報錯。
+
+```typescript
+let squareOptions = { colour: "red", width: 100 };
+let mySquare = createSquare(squareOptions);
+```
+
+上面的方法只在squareOptions和SquareConfig之間有共同的屬性時才好用。 在這個例子中，這個屬性為width。如果變量間不存在共同的對象屬性將會報錯。
