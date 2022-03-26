@@ -59,6 +59,7 @@
   * [interface](typescript/zi-liao-lei-xing/interface.md)
   * [函數](typescript/zi-liao-lei-xing/han-shu.md)
   * [this](typescript/zi-liao-lei-xing/this.md)
+  * [overload](typescript/zi-liao-lei-xing/overload.md)
 
 ## webassembly
 
