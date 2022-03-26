@@ -58,6 +58,7 @@
 * [資料類型](typescript/zi-liao-lei-xing/README.md)
   * [interface](typescript/zi-liao-lei-xing/interface.md)
   * [函數](typescript/zi-liao-lei-xing/han-shu.md)
+  * [this](typescript/zi-liao-lei-xing/this.md)
 
 ## webassembly
 
