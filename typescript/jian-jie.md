@@ -16,3 +16,4 @@
 * [\[gitbook\] typescript新手指南](https://willh.gitbook.io/typescript-tutorial/)
 * [深入理解 TypeScript](https://jkchao.github.io/typescript-book-chinese/)
 * [\[iT邦\]讓 TypeScript 成為你全端開發的 ACE！ 系列](https://ithelp.ithome.com.tw/users/20120614/ironman/2685)
+* [認識 TypeScript 中的型別魔術師：Mapped Type](https://pjchender.blogspot.com/2021/08/typescript-mapped-type.html)
