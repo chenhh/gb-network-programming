@@ -52,7 +52,7 @@ DOM 元素 API 也有對應的屬性，可以用來繫結事件處理函式。
 
 ## DOM Level 2 - Element.addEventListener(eventType, listener)
 
-addEventListener 方法可以用來繫結元素的事件處理函式，第一個引數 eventType 是事件名稱，第二個引數 listener 是事件處理函式。
+addEventListener 方法可以用來繫結元素的事件處理函式，第一個引數 eventType 是事件名稱(string)，第二個引數 listener 是事件處理函數(callback function)。
 
 ## DOM Level 2 - Element.removeEventListener(eventType, listener)
 
@@ -73,15 +73,34 @@ removeEventListener 原來取消透過 addEventListener 繫結的事件處理函
 
 ## Event Object
 
-當事件處理函式被執行時，會傳入一個引數代表 event object。
+當監聽的事件發生時，瀏覽器會去執行我們透過 addEventListener() 註冊的 Event Handler (EventListener) ，也就是我們所指定的函數。&#x20;
 
+這個時候，EventListener 會去建立一個「事件物件」 (Event Object)，裡面包含了所有與這個事件有關的屬性，並且以「引數」的形式傳給我們的 Event Handler。
 
+```javascript
+<button id="btn">Click</button>
+var btn = document.getElementById('btn');
+
+// 引數 e 就是上面說的事件物件 (Event Object)
+// 因為是引數，當然也可以自己定義名稱
+btn.addEventListener('click', function(e){
+  console.log(e);
+}, false);
+```
 
 ### Event Object
 
 Event Object 有幾個常用的屬性 (property)：
 
-
+* <mark style="color:red;">type</mark> 返回事件型別，例如 "click"。
+* <mark style="color:red;">target</mark>：指向觸發事件的 DOM element。
+* <mark style="color:red;">currentTarget</mark>：在 event bubbling 階段中，指向目前執行的事件處理函式是繫結在哪個 DOM element 上。
+* <mark style="color:red;">timeStamp：</mark>事件發生時的時間 timestamp (單位是 milliseconds 毫秒)。
+* <mark style="color:red;">eventPhase</mark>：返回為一個數字，表示事件處於目前所處的傳播狀態 (event flow)，有這些值：&#x20;
+  * 0: None。
+  * 1: capturing phase。&#x20;
+  * 2: target phase 。
+  * 3: bubbling phase。
 
 ### MouseEvent
 
