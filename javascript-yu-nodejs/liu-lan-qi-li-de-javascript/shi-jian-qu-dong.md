@@ -48,8 +48,6 @@ DOM Event 定義很多種事件型態，讓你可以用 JavaScript 來監聽 (li
 
 DOM 元素 API 也有對應的屬性，可以用來繫結事件處理函式。
 
-
-
 ## DOM Level 2 - Element.addEventListener(eventType, listener)
 
 addEventListener 方法可以用來繫結元素的事件處理函式，第一個引數 eventType 是事件名稱(string)，第二個引數 listener 是事件處理函數(callback function)。
@@ -70,6 +68,30 @@ removeEventListener 原來取消透過 addEventListener 繫結的事件處理函
 * 事件冒泡 (Event Bubbling) (由下而上，從目標節點到根節點)
 
 當 DOM 事件發生時，事件會先由外到內 (capturing phase)、再由內到外 (bubbling phase) 的順序來傳播。
+
+例如我們看這一個 HTML DOM 結構：
+
+```html
+<html>
+<head>
+    <title>event flow example</title>
+</head>
+<body>
+    <div>
+        <ul>
+            <li></li>
+        </ul>
+    </div>
+</body>
+</html>
+```
+
+當使用者點選 li 元素時，事件觸發的順序是：
+
+* Capturing 捕捉階段：document -> html -> body -> div -> ul -> li。
+* Bubbling 氣泡階段：li-> ul-> div -> body -> html-> document。
+
+DOM 中的元素會按照上面的順序依序地觸發其 click 事件。在 addEventListener 和 removeEventListener 方法中，有第三個引數布林值 useCapture 用來指定事件處理函式是要在 Capturing 階段或 Bubbling 階段被執行，false (預設) 表示 Bubbling，true 表示 Capturing。
 
 ## Event Object
 
@@ -104,21 +126,40 @@ Event Object 有幾個常用的屬性 (property)：
 
 ### MouseEvent
 
-當 MouseEvent (滑鼠事件) 發生時，Event Object 有幾個常用的屬性：
+當 MouseEvent (滑鼠事件，像是 mousedown, mouseup 和 mouseover 事件) 發生時，Event Object 有幾個常用的屬性：
 
-
+* <mark style="color:red;">which</mark>：當按下滑鼠按鍵，取得是哪個按鍵，可能的值有：&#x20;
+  * 0: 非按鍵&#x20;
+  * 1: 左鍵&#x20;
+  * 2: 中鍵或滾輪&#x20;
+  * 3: 右鍵&#x20;
+* <mark style="color:red;">relatedTarget</mark>：指向參與事件的相關 DOM element。用在 mouseover 事件，表示剛離開的那個 DOM element；用在 mouseout 事件，表示剛進入的那個 DOM element。
+* <mark style="color:red;">pageX</mark>：當按下滑鼠時 (或觸控螢幕時)，取得距離頁面 (document) 最左上角的水平距離 (單位 pixel) 。
+* <mark style="color:red;">pageY</mark>：當按下滑鼠時 (或觸控螢幕時)，取得距離頁面 (document) 最左上角的垂直距離 (單位 pixel)。
 
 ### KeyboardEvent
 
-當 KeyboardEvent (鍵盤事件) 發生時，Event Object 有幾個常用的屬性：
+當 KeyboardEvent (鍵盤事件，像是 keypress, keydown 和 keyup 事件) 發生時，Event Object 有幾個常用的屬性：
 
+* <mark style="color:red;">keyCode</mark>：當 keypress 事件時，返回 character code；當 keydown 或 keyup 事件時，返回 key code。
+* <mark style="color:red;">which</mark>：值同 keyCode charCode 當 keypress 事件時，返回 character code。
+* <mark style="color:red;">altKey</mark>：布林值 (boolean)，用來判斷使用者是否有按 alt 鍵。
+* <mark style="color:red;">ctrlKey</mark>：布林值 (boolean)，用來判斷使用者是否有按 ctrl 鍵。
+* <mark style="color:red;">metaKey</mark>：布林值 (boolean)，用來判斷使用者是否有按 meta 鍵。
+* <mark style="color:red;">shiftKey</mark>：布林值 (boolean)，用來判斷使用者是否有按 shift 鍵。
 
+Character codes 是一個代表 ASCII character 的數字；Key codes 則是一個數字，代表鍵盤上的某個按鍵。
 
 ### event.stopPropagation()
 
 那我怎麼不要讓事件傳播下去？答案就是使用 event object 的 stopPropagation 方法。
 
-
+```javascript
+element.addEventListener('click', function(event) {
+    event.stopPropagation();
+    // ...
+});
+```
 
 ### event.preventDefault()
 
@@ -129,18 +170,42 @@ event object 有一個 preventDefault 方法用來取消瀏覽器預設的行為
 * 點選一個超連結後，會載入新的頁面&#x20;
 * 在表單輸入欄位中輸入 enter 會送出表單
 
+```javascript
+element.addEventListener('click', function(event) {
+    event.preventDefault();
+    // ...
+});
+```
+
 ## 各種事件繫結的差異
 
-在 HTML 標籤內直接寫 JS（舊式寫法，不推薦） 容易被駭客植入惡意程式碼 。
+### 在 HTML 標籤內直接寫 JS
+
+舊式寫法，不推薦，容易被駭客植入惡意程式碼 。
 
 ```html
 <input onclick="alert('say Hello')" type="button" 
        class="btn" value="點選">
 ```
 
-on-event 處理器：主要的缺點為一個事件只能繫結一個函式。如果用此方法在同一個事件上繫結兩個不同函式，會造成兩個函式都無法如預期般正確運作。
+### on-event 處理器
 
-事件監聽（新寫法，推薦）：addEventListener 跟 on-event 處理器的差別在於，前者可以在一個 DOM 上執行兩個以上的函式；如果是在 DOM 上使用後者，就只能繫結一個函式。
+主要的缺點為一個事件只能繫結一個函式。如果用此方法在同一個事件上繫結兩個不同函式，會造成兩個函式都無法如預期般正確運作。
+
+```javascript
+document.onkeydown = function(event) {
+    if (event.keyCode === 89 && event.ctrlKey) {
+        alert('你同時按下 "control + y"'); 
+  
+    } else if (event.which === 90 && event.ctrlKey ){
+        alert('你同時按下 "control + z"'); 
+    }
+};
+```
+
+### 事件監聽（新寫法，推薦）
+
+addEventListener 跟 on-event 處理器的差別在於，前者可以在一個 DOM 上執行兩個以上的函式；如果是在 DOM 上使用後者，就只能繫結一個函式。
 
 ```javascript
 let el = document.querySelector('.btn');
