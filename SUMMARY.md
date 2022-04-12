@@ -42,6 +42,7 @@
   * [事件驅動](javascript-yu-nodejs/liu-lan-qi-li-de-javascript/shi-jian-qu-dong.md)
   * [capturing, bubbling and delegation](javascript-yu-nodejs/liu-lan-qi-li-de-javascript/capturing-bubbling-and-delegation.md)
 * [FAQ](javascript/faq.md)
+* [Canvas](javascript-yu-nodejs/canvas.md)
 * [Node.js](javascript-yu-nodejs/node.js/README.md)
   * [webpack](javascript-yu-nodejs/node.js/webpack.md)
   * [gulp](javascript-yu-nodejs/node.js/gulp.md)
