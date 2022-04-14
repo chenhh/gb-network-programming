@@ -31,6 +31,7 @@
   * [== 和 ===區別](javascript-yu-nodejs/zi-liao-lei-xing/he-qu-bie.md)
   * [變數宣告與作用域](javascript-yu-nodejs/zi-liao-lei-xing/bian-shu-xuan-gao-yu-zuo-yong-yu.md)
   * [物件(object)](javascript-yu-nodejs/zi-liao-lei-xing/wu-jian-object.md)
+  * [複製 Array / Object 的幾種常用方法（深/淺拷貝）](javascript-yu-nodejs/zi-liao-lei-xing/fu-zhi-array-object-de-ji-zhong-chang-yong-fang-fa-shen-qian-kao-bei.md)
   * [原型鏈(prototype chain)](javascript-yu-nodejs/zi-liao-lei-xing/yuan-xing-lian-prototype-chain.md)
 * [函數](javascript-yu-nodejs/han-shu/README.md)
   * [Promise與callback函數](javascript-yu-nodejs/han-shu/promise-yu-callback-han-shu.md)

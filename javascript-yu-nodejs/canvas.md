@@ -20,3 +20,7 @@ canvas的工作方式就像傳統的2d圖形引擎比如GDI；而SVG的工作方
 
 ![Canvas, SVG物件](../.gitbook/assets/canvas\_svg-min.png)
 
+## 參考資料
+
+* [\[MDN\] Canvas 教學檔案](https://developer.mozilla.org/zh-TW/docs/Web/API/Canvas\_API/Tutorial)
+

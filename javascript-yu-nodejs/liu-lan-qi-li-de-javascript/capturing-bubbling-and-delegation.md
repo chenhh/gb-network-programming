@@ -57,8 +57,24 @@ ul.addEventListener('click', ulFunc, true)
 
 ## 事件委派（Event Delegation）
 
-* `event.Target` - 指實際觸發事件的元素&#x20;
-* `event.currentTarget` - 指向事件繫結的元素
+事件委派是一種繫結事件的模式，將多個回呼函數繫結在同一個上層節點。
+
+為什麼會有事件委派的模式呢？&#x20;
+
+* 過多重複的監聽器 — 10\*10的按鈕 掛載一百個重複的click事件。
+* 掛載、移除事件是有成本的 — removeEventListener 超級麻煩。
+
+為什麼可以將事件委派？&#x20;
+
+* 事件的冒泡機制 — 把子節點們的事件統一處理 。
+* 事件的target屬性 — 辨別事件觸發元素的位置。
+
+事件冒泡 與 target 屬性&#x20;
+
+* 事件被觸發後如果沒特別 stopPropagation 將會冒泡上去。
+* 事件有兩個特別屬性 target & currentTarget。
+* `event.Target` - 指實際觸發事件的元素 。
+* `event.currentTarget` - 事件繫結函數的元素。
 
 如果想讓按鈕click後，在主控台印出"Click!"，我們可能會這樣寫：
 
@@ -104,6 +120,24 @@ let buttons = document.querySelector('#buttons')  //步驟1
 * 步驟1： 先選取button的父元素（也就是 \<div id="#buttons">
 * 步驟2： 記得將事件監聽附加到父元素
 * 步驟3： 使用event.target選擇目標元素（e.target會指向），因為這邊未將button設定className，所以使用e.target.nodeName === 'BUTTON'去設立條件。
+
+也可用switch-case做事件委派：
+
+```javascript
+const form = document.querySelector('form');
+form.addEventListener('click',e=>{
+  switch(e.target.id){
+    case 'btn1':
+      /* do something if btn1 click */
+      break;
+    case 'btn2':
+      /* do something if btn2 click */
+      break;
+    default:
+      break;
+  }
+})
+```
 
 ### this簡化程式碼
 
