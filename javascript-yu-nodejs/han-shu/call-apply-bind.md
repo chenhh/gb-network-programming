@@ -76,3 +76,17 @@ function sum(n1, n2, n3) {
 const _sum = sum.bind(null, 1);
 _sum(2, 3); // 6
 ```
+
+```javascript
+function talking(time, greeting, name) {
+  console.log(`[${time}] ${greeting} ${name}!`);
+}
+// 固定第一個參數
+var morning = talking.bind(null, 'Morning');
+// 設定time
+morning('Hello', 'Dennis'); // [Morning] Hello Dennis!
+// 固定前兩個參數
+var morning_hello = morning.bind(null, 'Hiiii!');
+// 再設定greeting
+morning_hello('Jack'); // [Morning] Hiiii! Jack!
+```
