@@ -4,6 +4,8 @@
 
 call、apply、bind 三者都是 JavaScript Function 的內建函式，他們與 this 的關係重大，除此之外，call & apply 可以作為呼叫 Function 的另一個手段，而 bind 則會回傳一個經過包裹後的 Function 回來。
 
+而其根本差異性是 <mark style="color:red;">call 會直接去執行函式並回傳結果，而 bind 回傳的是一個「被設定好的函式」</mark>，這也意味著 **bind 不只能做到 wrapper 特定 this ，還能去 wrapper 引數**。
+
 ## call
 
 `fn.call(this, arg1, arg2..., argn)`
@@ -63,3 +65,14 @@ console.log(add1(4));			// 5
 ```
 
 當之後我們執行 add1 的話，bind 的第二個引數1 就會作為 add 函式的第一個引數帶入了，也就是說，之後我們只需要帶入第二個引數給 add1 就可以達成 add(1, ?) 的功能了。
+
+```javascript
+// Simple binding
+function sum(n1, n2, n3) {
+  return n1 + n2 + n3;
+}
+//而這個「設定」兩字正是 bind 的精髓所在。
+// 如果我確定第一個傳入的數肯定是1
+const _sum = sum.bind(null, 1);
+_sum(2, 3); // 6
+```
