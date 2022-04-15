@@ -1,0 +1,65 @@
+# call, apply, bind
+
+## 簡介
+
+call、apply、bind 三者都是 JavaScript Function 的內建函式，他們與 this 的關係重大，除此之外，call & apply 可以作為呼叫 Function 的另一個手段，而 bind 則會回傳一個經過包裹後的 Function 回來。
+
+## call
+
+`fn.call(this, arg1, arg2..., argn)`
+
+* 第一個引數：輸入的物件會被指定為目標函式中的 this。
+* 第二以後的引數：會作為引數傳進目標函式中，如果目標函式中不需要引數則不要傳入即可。
+
+call 是 Function 的內建函式。功能為執行 function與明確指定 this。
+
+```javascript
+function add(a, b) {
+  return a + b;
+}
+console.log(add(1, 2));		// 3
+console.log(add.call(null, 1, 2));// 3
+```
+
+<mark style="color:red;">上列可以很清楚的知道 call 對我們來說唯一的使用情境就在於要明確指定 this 的時候</mark>。
+
+## apply
+
+`fn.apply(this, [arg1, arg2..., argn])`
+
+* 第一個引數：輸入的物件會被指定為目標函式中的 this。
+* 第二個引數：必須是陣列，會把陣列中的每個元素作為引數傳進目標函式中，如果目標函式中不需要引數則不要傳入即可。
+
+```javascript
+function add(a, b) {
+  return a + b;
+}
+console.log(add(1, 2));		// 3
+console.log(add.call(null, 1, 2)); // 3
+console.log(add.apply(null, [1, 2])); // 3
+console.log(add.apply(null, 1, 2)); 
+// Uncaught TypeError: CreateListFromArrayLike called on non-object
+```
+
+## bind
+
+`fn.bind(this, arg1, arg2..., argn)`
+
+* 第一個引數：輸入的物件會被指定為目標函式中的 this ( 以硬繫結的方式 )。
+* 第二以後的引數：會作為往後傳進目標函式的引數，如果目標函式中不需要引數則不要傳入即可。
+* 回傳：回傳包裹後的目標函式。執行這個包裹函式後，可以幾乎確定 this 不會被改變，另外，也可以把先前傳入 bind 的引數 一併帶進目標函式中。
+
+```javascript
+function add(a, b) {
+  return a + b;
+}
+add.call(null, 1, 2);			// 3
+add.call(null, 1, 4);			// 5
+add.apply(null, [1, 2]);		// 3
+add.apply(null, [1, 4]);		// 5
+var add1 = add.bind(null, 1);
+console.log(add1(2));			// 3
+console.log(add1(4));			// 5
+```
+
+當之後我們執行 add1 的話，bind 的第二個引數1 就會作為 add 函式的第一個引數帶入了，也就是說，之後我們只需要帶入第二個引數給 add1 就可以達成 add(1, ?) 的功能了。
