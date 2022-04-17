@@ -36,6 +36,7 @@
 * [函數](javascript-yu-nodejs/han-shu/README.md)
   * [Promise與callback函數](javascript-yu-nodejs/han-shu/promise-yu-callback-han-shu.md)
   * [call, apply, bind](javascript-yu-nodejs/han-shu/call-apply-bind.md)
+  * [箭頭函數(arrow function)](javascript-yu-nodejs/han-shu/jian-tou-han-shu-arrow-function.md)
 * [迴圈與迭代](javascript-yu-nodejs/hui-quan-yu-die-dai/README.md)
   * [iterator and generator](javascript-yu-nodejs/hui-quan-yu-die-dai/iterator-and-generator.md)
 * [例外處理](javascript-yu-nodejs/li-wai-chu-li.md)
