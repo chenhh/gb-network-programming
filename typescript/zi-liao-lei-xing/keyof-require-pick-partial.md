@@ -1,4 +1,4 @@
-# keyof, require,
+# keyof, require, pick, partial
 
 ## 簡介
 
@@ -53,7 +53,7 @@ type PropertyName = string | number | symbol;
 
 ## Pick、Require, Partial
 
-既然瞭解了 keyof，可以使用它對屬性做一些擴展， 如實現 Partial 和 Pick，Pick 一般用在 \_.pick 中。
+既然瞭解了 keyof，可以使用它對屬性做一些擴展， 如實現 Partial 和 Pick，<mark style="color:red;">Pick 就是從一個復合類型中，取出幾個想要的類型的組合</mark>。
 
 ```typescript
 // 只要有部份T的屬性即可
@@ -81,6 +81,39 @@ type PartialUser = Partial<User>
 
 // 相當於: type PickUser = { id: number; age: number; }
 type PickUser = Pick<User, 'id' | 'age'>t
+```
+
+## 泛型約束
+
+我們有時候想操作某類型的一組值，並且我們知道這組值具有什麼樣的屬性。 在 loggingIdentity例子中，我們想訪問arg的length屬性，但是編譯器並不能證明每種類型都有length屬性，所以就報錯了。
+
+```typescript
+function loggingIdentity(arg: T): T { 
+  console.log(arg.length); // Error: T doesn't have .length 
+  return arg; 
+} 
+```
+
+相比於操作any所有類型，我們想要限制函數去處理任意帶有.length屬性的所有類型。 只要傳入的類型有這個屬性，我們就允許，就是說至少包含這一屬性。 為此，我們需要列出對於T的約束要求。
+
+為此，我們定義一個介面來描述約束條件。 創建一個包含 .length屬性的介面，使用這個介面和extends關鍵字來實現約束：
+
+```typescript
+interface Lengthwise { 
+  length: number; 
+}
+function loggingIdentity<T textends Lengthwise>(arg: T): T { 
+   // Now we know it has a .length property, so no more error
+   console.log(arg.length); 
+   return arg; 
+}    
+```
+
+現在這個泛型函數被定義了約束，因此它不再是適用於任意類型。我們需要傳入符合約束類型的值，必須包含必須的屬性：
+
+```javascript
+loggingIdentity(3); //error
+loggingIdentity({length:10, value:3 }); // ok
 ```
 
 ## Condition Type
