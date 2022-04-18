@@ -80,7 +80,8 @@ interface User {
 type PartialUser = Partial<User>
 
 // 相當於: type PickUser = { id: number; age: number; }
-type PickUser = Pick<User, 'id' | 'age'>t
+// 只能有id與age兩個屬性
+type PickUser = Pick<User, 'id' | 'age'>
 ```
 
 ## 泛型約束
