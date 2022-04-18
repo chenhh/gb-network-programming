@@ -64,6 +64,7 @@
   * [函數](typescript/zi-liao-lei-xing/han-shu.md)
   * [this](typescript/zi-liao-lei-xing/this.md)
   * [overload](typescript/zi-liao-lei-xing/overload.md)
+  * [keyof, require,](typescript/zi-liao-lei-xing/keyof-require.md)
 
 ## webassembly
 
