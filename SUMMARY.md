@@ -66,6 +66,7 @@
   * [overload](typescript/zi-liao-lei-xing/overload.md)
   * [keyof, require, pick, partial](typescript/zi-liao-lei-xing/keyof-require-pick-partial.md)
   * [替類別取別名](typescript/zi-liao-lei-xing/ti-lei-bie-qu-bie-ming.md)
+  * [泛型(Generics)](typescript/zi-liao-lei-xing/fan-xing-generics.md)
 
 ## webassembly
 
