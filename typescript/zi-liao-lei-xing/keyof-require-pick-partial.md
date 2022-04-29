@@ -84,6 +84,89 @@ type PartialUser = Partial<User>
 type PickUser = Pick<User, 'id' | 'age'>
 ```
 
+## Readonly
+
+### 變數與參數
+
+```typescript
+function foo(config: { readonly bar: number, readonly bas: number }) {
+  // ..
+}
+// 現在你能夠確保 'config' 不能夠被改變了
+const config = { bar: 123, bas: 123 };
+foo(config);
+```
+
+也可以在 interface 和 type 裡使用 readonly。
+
+```typescript
+type Foo = {
+  readonly bar: number;
+  readonly bas: number;
+};
+
+// 初始化
+const foo: Foo = { bar: 123, bas: 456 };
+
+// 不能被改變
+foo.bar = 456; // Error: foo.bar 為唯讀屬性
+```
+
+也能指定一個類的屬性為唯讀，然後在聲明時或者構造函數中初始化它們。
+
+```typescript
+class Foo {
+  readonly bar = 1; // OK
+  readonly baz: string;
+  constructor() {
+    this.baz = 'hello'; // OK
+  }
+}
+```
+
+### 泛型
+
+Readonly 的對映類型，它接收一個泛型 T，用來把它的所有屬性標記為唯讀類型。
+
+```typescript
+type Foo = {
+  bar: number;
+  bas: number;
+};
+
+type FooReadonly = Readonly<Foo>;
+
+const foo: Foo = { bar: 123, bas: 456 };
+const fooReadonly: FooReadonly = { bar: 123, bas: 456 };
+
+foo.bar = 456; // ok
+fooReadonly.bar = 456; // Error: bar 屬性只讀
+```
+
+## Mutable
+
+將type T中所有readonly的屬性去除。
+
+```typescript
+type Mutable<T> = {
+	-readonly [P in keyof T]: T[P];
+};
+
+// usage
+type Foo = {
+  bar: number;
+  readonly bas: number;
+};
+
+let foo: Foo = { bar: 123, bas: 456 };
+foo.bar = 666;
+//foo.bas = 971;  // readonly, error
+
+let foo2: Mutable<Foo> = { bar: 123, bas: 456 };
+foo2.bar = 666;
+foo2.bas = 971;  // OK
+```
+
 ## 泛型約束
 
 我們有時候想操作某類型的一組值，並且我們知道這組值具有什麼樣的屬性。 在 loggingIdentity例子中，我們想訪問arg的length屬性，但是編譯器並不能證明每種類型都有length屬性，所以就報錯了。
