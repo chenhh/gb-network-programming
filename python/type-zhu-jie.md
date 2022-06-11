@@ -18,6 +18,30 @@ def get_value(json: str) -> str:
      return x
 ```
 
+## 標註numpy類型
+
+```python
+import numpy as np
+Float64Array = np.ndarray[Any, np.dtype[np.float64]]
+Int64Array = np.ndarray[Any, np.dtype[np.int64]]
+Int32Array = np.ndarray[Any, np.dtype[np.int32]]
+IntArray = np.ndarray[Any, np.dtype[np.int_]]
+BoolArray = np.ndarray[Any, np.dtype[np.bool_]]
+AnyArray = np.ndarray[Any, Any]
+Uint32Array = np.ndarray[Any, np.dtype[np.uint32]]
+
+RNGType = Callable[[Union[int, Tuple[int, ...]]], Float64Array]
+ArrayLike1D = Union[NDArray, Series]
+ArrayLike2D = Union[NDArray, DataFrame]
+ArrayLike = Union[NDArray, DataFrame, Series]
+NDArrayOrFrame = TypeVar("NDArrayOrFrame", Float64Array, DataFrame)
+AnyPandas = Union[Series, DataFrame]
+DateLike = Union[str, dt.datetime, np.datetime64, Timestamp]
+Label = Optional[Hashable]
+FloatOrArray = TypeVar("FloatOrArray", float, np.ndarray)
+UnitRootTrend = Literal["n", "c", "ct", "ctt"]
+```
+
 ## 參考資料
 
 * [module typing](https://docs.python.org/zh-tw/3/library/typing.html#module-typing)
