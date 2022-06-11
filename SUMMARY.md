@@ -71,3 +71,7 @@
 ## webassembly
 
 * [wasm簡介](webassembly/wasm-jian-jie.md)
+
+## python
+
+* [type註解](python/type-zhu-jie.md)
