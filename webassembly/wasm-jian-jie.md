@@ -26,7 +26,7 @@ WebAssembly被設計為可以和JavaScript一起協同工作。通過使用WebAs
 
 ## 參考資料
 
-* [https://webassembly.org/](https://webassembly.org)
+* [https://webassembly.org/](https://webassembly.org/)
 * [WebAssembly資料精選 - 中文版](https://github.com/chai2010/awesome-wasm-zh)
 * [\[github\]C/C++面向WebAssembly編程](https://github.com/3dgen/cppwasm-book/blob/master/zh/README.md)
 * [\[rust\]wasm-pack](https://rustwasm.github.io/wasm-pack/)

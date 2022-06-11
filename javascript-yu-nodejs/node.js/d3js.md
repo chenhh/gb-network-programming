@@ -15,6 +15,6 @@ D3.js（D3或Data-Driven Documents）是一個使用動態圖形(svg)進行資�
 
 ## 參考資料
 
-* [https://d3js.org/](https://d3js.org)
+* [https://d3js.org/](https://d3js.org/)
 * [\[cool3c\] 一圖搞懂JPG、PNG、GIF、SVG圖片檔案格式使用時機](https://www.cool3c.com/article/146971)
 * [\[iT邦\] 三十天成為D3.js v7 好手 系列](https://ithelp.ithome.com.tw/users/20134930/ironman/4181)
