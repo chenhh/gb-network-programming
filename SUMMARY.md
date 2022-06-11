@@ -75,3 +75,4 @@
 ## python
 
 * [type註解](python/type-zhu-jie.md)
+* [matplotlib](python/matplotlib.md)

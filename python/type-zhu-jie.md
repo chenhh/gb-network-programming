@@ -45,3 +45,4 @@ UnitRootTrend = Literal["n", "c", "ct", "ctt"]
 ## 參考資料
 
 * [module typing](https://docs.python.org/zh-tw/3/library/typing.html#module-typing)
+* [\[林信良\] 思考Python的型態提示](https://www.ithome.com.tw/voice/104417), [Type Hints的野心](https://www.ithome.com.tw/voice/116983)
