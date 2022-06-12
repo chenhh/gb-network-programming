@@ -29,11 +29,65 @@ plt.show()
 
 ![plt直接繪圖](../.gitbook/assets/plt\_plot-min.png)
 
+```python
+import matplotlib.pyplot as plt
+import numpy as np
+# 將 figure 例項化到 fig 的變數上，並設定寬與高（此處為預設值）
+fig = plt.figure(figsize=(6, 4))
+
+# 將 axe 新增到例項化後 2×2 的 figure 上，並指定第 1,2,3 個
+ax_1 = fig.add_subplot(2, 2, 1)
+ax_2 = fig.add_subplot(2, 2, 2)
+ax_3 = fig.add_subplot(2, 2, 3)
+plt.show()
+
+# 以下程式碼有相同的結果
+fig = plt.figure(num=4, figsize=(6, 4))
+plt.subplot(221)
+plt.subplot(222)
+plt.subplot(223)
+plt.show()
+```
+
+![以axes繪圖，較為複雜](../.gitbook/assets/plt\_ax-min.png)
+
+* 第一種方式plt，是先生成了一個畫布，然後在這個畫布上隱式的生成一個畫圖區域來進行畫圖。
+* 第二種方式axes，先生成一個畫布，然後，我們在此畫布上，選定一個子區域畫了一個子圖。
+
+
+
+## 組件
+
 * Figure：可以把他當作畫布，一張畫布上可以有很多(至少一個)的 Axes。 也會包含了客制化的legend, titles等組件。
 * Axes：就是我們俗稱的「子圖」，每個 Axes 一次只能在一張畫布上。這是實際繪圖的部份，Axes包含至少兩個Axis物件，其負責資料限制(`set_xlim()`, `set_ylim()等`)，每個Axes都有一個標題物件(title)，可透過`set_title()`設定。一個x軸標籤(透過`set_xlabel()`設定)，一個y軸標籤(透過`set_ylabel()`設定)。
 * Axis：類似數字線的物件，負責圖形限制與生成軸的刻度(tick)的刻度線標記(tick labels) 。刻度的位置由Locator物件所決定，而刻度線標記由Formatter物件標記。
 
 ![各組件名稱](../.gitbook/assets/matplotlib\_widget-min.png)
+
+![matplotlib組件](../.gitbook/assets/matplotlib\_widget.jpg)
+
+## 標題(title)
+
+如果是使用`plt`那麼就用`plt.title()`，如果使用`ax`可以使用`ax.set_title()`。
+
+```python
+matplotlib.pyplot.title(label, fontdict=None, loc='center', 
+                         pad=None, **kwargs)
+
+# 最簡單的標題                         
+plt.title("This is a title")
+
+# 通過fontsize參數調整字體大小，數字越大字體越大
+plt.title("This is a title",fontsize = 20)
+
+# 顏色可以使用color參數調整，可以是顏色名也可以是html顏色代碼
+plt.title("This is a title",fontsize = 20,color = 'blue')
+
+#可以通過fontstyle修改字體樣式，italic是斜體，oblique是傾斜 
+plt.title("This is a title",fontsize = 20,color = 'blue',fontstyle='italic')
+```
+
+
 
 ## 參考資料
 
