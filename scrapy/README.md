@@ -2,7 +2,7 @@
 
 ## 簡介
 
-[https://scrapy.org/](https://scrapy.org/)
+[https://scrapy.org/](https://scrapy.org)
 
 以下介紹以python 3.8與scrapy >=2.5.0版本為主。
 

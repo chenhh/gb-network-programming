@@ -100,13 +100,13 @@ regex 是正規表示式(Regular Expression)的簡稱，我們只要使用正確
 
 ### 套件
 
-* [\[Intel\] Hyperscan](https://www.hyperscan.io/)
+* [\[Intel\] Hyperscan](https://www.hyperscan.io)
 
 ### 驗證測試
 
-* [Rubular: a Ruby regular expression editor](https://rubular.com/)
-* [RegExr: is an online tool to learn, build, & test Regular Expressions](https://regexr.com/)
-* [Regex101](https://regex101.com/)
+* [Rubular: a Ruby regular expression editor](https://rubular.com)
+* [RegExr: is an online tool to learn, build, & test Regular Expressions](https://regexr.com)
+* [Regex101](https://regex101.com)
 * [Regulex](https://jex.im/regulex/#!flags=\&re=%5E\(a%7Cb\)\*%3F%24)
-* [Regexper](https://regexper.com/)
-* [PyRegex](http://www.pyregex.com/)
+* [Regexper](https://regexper.com)
+* [PyRegex](http://www.pyregex.com)

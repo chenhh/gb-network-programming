@@ -76,8 +76,8 @@ XBRL架構的三個層次：
 ## 參考資料
 
 * \[[台灣證券交易所\]財務報告語言(XBRL) eXtensible Business Reporting Language](https://www.twse.com.tw/XBRL/about)
-* [\[公開資訊觀測站\]財務比較e點通](https://mopsfin.twse.com.tw/)
+* [\[公開資訊觀測站\]財務比較e點通](https://mopsfin.twse.com.tw)
 * [\[屏東大學\] 周國華老師 教學網站](http://www.ais.nptu.edu.tw/xbrl/)
 * [\[github\] xbrl parser](https://github.com/hermeseagel/XRBL\_parser)
 * [\[貓囧丸 ct9w Project\] Taiwan XBRL Convert Python Script](https://kdh74616.blogspot.com/search/label/\[XBRL])
-* [\[official site\] XBRL.org](https://www.xbrl.org/)
+* [\[official site\] XBRL.org](https://www.xbrl.org)
