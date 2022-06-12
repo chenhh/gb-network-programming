@@ -103,8 +103,8 @@ package.json 位於模組的目錄下，用於定義包的屬性。
 
 ## 參考資料
 
-* [node.js中文網](http://nodejs.cn)
-* [Node.green (nodejs ECMA語法支援)](https://node.green)
+* [node.js中文網](http://nodejs.cn/)
+* [Node.green (nodejs ECMA語法支援)](https://node.green/)
 
 
 

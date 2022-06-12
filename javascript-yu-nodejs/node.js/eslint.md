@@ -12,5 +12,5 @@ JavaScript 是一個動態的弱類型語言，在開發中比較容易出錯。
 
 ## 參考資料
 
-* [ESlint中文](https://cn.eslint.org)
+* [ESlint中文](https://cn.eslint.org/)
 

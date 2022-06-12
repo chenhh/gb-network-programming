@@ -114,4 +114,4 @@ XML Schema 可定義 XML 檔案的元素。簡易元素指那些只包含文字�
 ## 參考資料
 
 * [\[CSDN\] 對XSD schema檔案中elementFormDefault屬性的理解](xml-schema.md#jian-jie)
-* [\[CSDN\] XSD詳解二 - 簡易元素、屬性、內容限定](https://blog.csdn.net/weixin\_30340819/article/details/95299434?spm=1001.2101.3001.4242.2)
+* [\[CSDN\] XSD詳解二 - 簡易元素、屬性、內容限定](https://blog.csdn.net/weixin\_30340819/article/details/95299434?utm\_medium=distribute.pc\_relevant.none-task-blog-2\~default\~baidujs\_baidulandingword\~default-1.no\_search\_link\&spm=1001.2101.3001.4242.2)

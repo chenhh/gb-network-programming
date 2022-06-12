@@ -207,6 +207,7 @@ UnitRootTrend = Literal["n", "c", "ct", "ctt"]
 * [module typing](https://docs.python.org/zh-tw/3/library/typing.html#module-typing)
 * [\[林信良\] 思考Python的型態提示](https://www.ithome.com.tw/voice/104417), [Type Hints的野心](https://www.ithome.com.tw/voice/116983)
 * [\[知乎\] Python Type Hints 從入門到實踐](https://zhuanlan.zhihu.com/p/424042902)
+* [Type Hints 入門教程，讓程式碼更加規范整潔](https://zhuanlan.zhihu.com/p/519335398)
 
 ### 型別檢查器
 
