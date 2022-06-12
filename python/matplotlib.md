@@ -70,6 +70,10 @@ plt.show()
 
 [一個plt.title設置標題，我有十種玩法！](https://mp.weixin.qq.com/s/tvXOHjIm5k41ls4IZJtBsQ)
 
+[matplotlib.pyplot.title](https://matplotlib.org/stable/api/\_as\_gen/matplotlib.pyplot.title.html)
+
+
+
 如果是使用`plt`那麼就用`plt.title()`，如果使用`ax`可以使用`ax.set_title()`。
 
 ```python
