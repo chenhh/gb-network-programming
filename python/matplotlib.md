@@ -27,6 +27,8 @@ plt.legend()
 plt.show()
 ```
 
+![plt直接繪圖](../.gitbook/assets/plt\_plot-min.png)
+
 * Figure：可以把他當作畫布，一張畫布上可以有很多(至少一個)的 Axes。 也會包含了客制化的legend, titles等組件。
 * Axes：就是我們俗稱的「子圖」，每個 Axes 一次只能在一張畫布上。這是實際繪圖的部份，Axes包含至少兩個Axis物件，其負責資料限制(`set_xlim()`, `set_ylim()等`)，每個Axes都有一個標題物件(title)，可透過`set_title()`設定。一個x軸標籤(透過`set_xlabel()`設定)，一個y軸標籤(透過`set_ylabel()`設定)。
 * Axis：類似數字線的物件，負責圖形限制與生成軸的刻度(tick)的刻度線標記(tick labels) 。刻度的位置由Locator物件所決定，而刻度線標記由Formatter物件標記。
