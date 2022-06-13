@@ -133,7 +133,64 @@ xp("(//li)[1]")
 ['<li>1</li>']
 ```
 
+## FAQ
 
+### 使用/path/text()抓取資料時，如果/path中某些欄位之值為空時，text()會自動忽略空欄位
+
+```bash
+# 倒數第二個欄位的text為空值
+In [36]: response.xpath('//table/tbody/tr[2]/td')
+Out[36]: 
+[<Selector xpath='//table/tbody/tr[2]/td' data='<td>0051</td>'>,
+ <Selector xpath='//table/tbody/tr[2]/td' data='<td>元大中型100</td>'>,
+ <Selector xpath='//table/tbody/tr[2]/td' data='<td>TW0000051002</td>'>,
+ <Selector xpath='//table/tbody/tr[2]/td' data='<td>10,500,000</td>'>,
+ <Selector xpath='//table/tbody/tr[2]/td' data='<td>10,391,929</td>'>,
+ <Selector xpath='//table/tbody/tr[2]/td' data='<td>108,071</td>'>,
+ <Selector xpath='//table/tbody/tr[2]/td' data='<td>98.97</td>'>,
+ <Selector xpath='//table/tbody/tr[2]/td' data='<td>1.02</td>'>,
+ <Selector xpath='//table/tbody/tr[2]/td' data='<td>100.00</td>'>,
+ <Selector xpath='//table/tbody/tr[2]/td' data='<td>100.00</td>'>,
+ <Selector xpath='//table/tbody/tr[2]/td' data='<td></td>'>,
+ <Selector xpath='//table/tbody/tr[2]/td' data='<td>110/06/30</td>'>]
+```
+
+```bash
+# 使用text()抓資料時，會自動省略空欄位之值
+In [37]: response.xpath('//table/tbody/tr[2]/td/text()')
+Out[37]: 
+[<Selector xpath='//table/tbody/tr[2]/td/text()' data='0051'>,
+ <Selector xpath='//table/tbody/tr[2]/td/text()' data='元大中型100'>,
+ <Selector xpath='//table/tbody/tr[2]/td/text()' data='TW0000051002'>,
+ <Selector xpath='//table/tbody/tr[2]/td/text()' data='10,500,000'>,
+ <Selector xpath='//table/tbody/tr[2]/td/text()' data='10,391,929'>,
+ <Selector xpath='//table/tbody/tr[2]/td/text()' data='108,071'>,
+ <Selector xpath='//table/tbody/tr[2]/td/text()' data='98.97'>,
+ <Selector xpath='//table/tbody/tr[2]/td/text()' data='1.02'>,
+ <Selector xpath='//table/tbody/tr[2]/td/text()' data='100.00'>,
+ <Selector xpath='//table/tbody/tr[2]/td/text()' data='100.00'>,
+ <Selector xpath='//table/tbody/tr[2]/td/text()' data='110/06/30'>]
+```
+
+解法1：先抓列的xpath後，再將列中每一欄取text()，空白欄會變成None
+
+```python
+for li in response.xpath('//table/tbody/tr[2]/td'):
+    print(li.xpath('text()').get())
+    
+0051
+元大中型100
+TW0000051002
+10,500,000
+10,391,929
+108,071
+98.97
+1.02
+100.00
+100.00
+None
+110/06/30
+```
 
 ## 參考資料
 
