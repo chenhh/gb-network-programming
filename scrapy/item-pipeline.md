@@ -54,6 +54,17 @@ class IthomeCrawlersPipeline(object):
 
 建立 Pipeline 元件後還需要設定每個元件的執行順序。在專案目錄中的 settings.py 檔案中有一個 dict 型態的 ITEM\_PIPELINE 變數，key 是元件的完整名稱，value 是 0\~1000 的整數，數字小的會先執行。
 
+## 不同 Pipelines 元件分別處理不同的 Items的方法
+
+要額外判斷收到的是不是預期要處理的類別，如果不是就要直接回傳交給後面的元件處理。
+
+```python
+def process_item(self, item, spider):
+    # 只有在收到原文的 Item 時才處理
+    if type(item) is items.IthomeArticleItem:
+        pass
+```
+
 ## 參考資料
 
 * [\[stackoverflow\] Scrapy - Different pipeline per Item](https://stackoverflow.com/questions/43927139/scrapy-different-pipeline-per-item).
