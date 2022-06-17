@@ -9,7 +9,7 @@
   * [Item](scrapy/item.md)
   * [Item pipeline](scrapy/item-pipeline.md)
   * [feed export](scrapy/feed-export.md)
-  * [FAQ](scrapy/faq/README.md)
+  * [FAQ](scrapy/faq.md)
     * [FAQ: 網頁](scrapy/faq/faq-wang-ye.md)
   * [scrapyd](scrapy/scrapyd.md)
 * [http](http/README.md)
