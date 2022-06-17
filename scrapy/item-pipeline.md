@@ -17,11 +17,42 @@
 
 **注意：item pipeline 的預設設計是用來針對所有的 items 進行處理，而非對應到指定的items**。
 
+## 方法
 
+Pipelines 中每一個元件都是一個 Python 類別，不需要繼承其他類別，但必須實作process\_item這個方法：
 
-Pipelines 中每一個元件都是一個 Python 類別，不需要繼承其他類別，但必須實作這個方法：
+* `process_item(self, item, spider)`：實際處理爬取專案的方法，應該要回傳處理後的 dict 物件、Item 物件、Twisted Deferred 或丟擲 DropItem 例外。
+* `open_spider(self, spider)`：在爬蟲啟動時被呼叫。&#x20;
+* `close_spider(self, spider)`：在爬蟲關閉時被呼叫。&#x20;
+* `from_crawler(cls, crawler)`：用來初始化 Pipeline 元件的 classmethod。
 
-process\_item(self, item, spider)：實際處理爬取專案的方法，應該要回傳處理後的 dict 物件、Item 物件、Twisted Deferred 或丟擲 DropItem 例外。
+## 建立 Pipeline 元件
+
+立好專案後，專案目錄中會有一個 pipelines.py 檔案，其中有 Scrapy 根據專案名稱自動建立的 Pipeline 類別。
+
+```python
+class TWSEMarketSummaryPipeline(object):
+   
+    def process_item(self, item, spider):
+        # 不處理，直接回傳item
+        return item
+```
+
+假設我們不想要儲存瀏覽次數小於 20 的文章可以這樣做：
+
+```python
+from scrapy.exceptions import DropItem
+
+class IthomeCrawlersPipeline(object):
+    def process_item(self, item, spider):
+        if item['view_count'] < 20:
+            raise DropItem(f'[{item["title"]}] 瀏覽數小於 20')
+        return item
+```
+
+## 設定 Pipeline 執行順序
+
+建立 Pipeline 元件後還需要設定每個元件的執行順序。在專案目錄中的 settings.py 檔案中有一個 dict 型態的 ITEM\_PIPELINE 變數，key 是元件的完整名稱，value 是 0\~1000 的整數，數字小的會先執行。
 
 ## 參考資料
 
