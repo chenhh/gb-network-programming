@@ -49,7 +49,7 @@ Available commands:
 
 ## scrapy架構流程
 
-![scrapy架構](../.gitbook/assets/scrapy\_architecture\_02-min.png)
+![scrapy架構](../../.gitbook/assets/scrapy\_architecture\_02-min.png)
 
 1. `Spider`發送最初的請求(Requests)給Engine。
 2. `Engine`在`Scheduler`調度一個請求(Requests)，並要求下一次Requests做爬取。
@@ -111,7 +111,12 @@ Available commands:
  'scrapy.spidermiddlewares.depth.DepthMiddleware']
 ```
 
+## 相關資源
 
+* [https://scrapy-chs.readthedocs.io/zh\_CN/1.0/index.html](https://scrapy-chs.readthedocs.io/zh\_CN/1.0/index.html)
+* [爬蟲在手、資料我有 - 30 天 Scrapy 爬蟲實戰 系列](https://ithelp.ithome.com.tw/users/20107875/ironman/2209)
+* [Scrapy + Python 3: PTT 資料抓取與分析](https://jasonblog.github.io/note/python/scrapy\_+\_python\_3\_ptt\_zi\_liao\_zhua\_qu\_yu\_fen\_xi.html)
+* [python爬蟲學習](https://www.zhihu.com/column/c\_1261957638956621824)
 
 
 

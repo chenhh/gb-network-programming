@@ -4,13 +4,13 @@
 
 XPath，全稱 XML Path Language，即 XML 路徑語言，它是一門在XML文檔中查詢資訊的語言。XPath 最初設計是用來搜尋XML文檔的，但是它同樣適用於 HTML 文檔的搜尋。
 
-XPath是使用XML路徑表達式在網頁上查詢任何元素的語法或語言。**XPath用於使用HTML DOM結構查詢網頁上任何元素的位置**。lxml目前只有支援至XPath 1.0版本。
+XPath是使用XML路徑表達式在網頁上查詢任何元素的語法或語言。**XPath用於使用HTML DOM結構查詢網頁上任何元素的位置**。<mark style="color:red;">lxml目前只有支援至XPath 1.0版本</mark>。
 
 在爬取網頁中，如果一般定位符（如id，class，name等）找不到元素，可使用XPath在網頁上查詢元素。
 
 ## XPath的語法
 
-![](../../.gitbook/assets/XPathinSele1-min.png)
+![](../../../.gitbook/assets/XPathinSele1-min.png)
 
 XPath包含位於網頁上的元素的路徑。創建XPath的標准語法是：
 

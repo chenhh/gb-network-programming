@@ -15,7 +15,7 @@
 * 檢查重複的資料(並丟棄)；
 * 將爬取結果保存到資料庫中；
 
-**注意：item pipeline 的預設設計是用來針對所有的 items 進行處理，而非對應到指定的items**。
+<mark style="color:red;">**注意：item pipeline 的預設設計是用來針對所有的 items 進行處理，而非對應到指定的items**</mark>。
 
 ## 方法
 

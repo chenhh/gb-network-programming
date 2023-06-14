@@ -79,7 +79,7 @@ href="external-stylesheet.css">
 
 例如想要將 HTML 頁面上所有段落元素（paragraph elements）裡的文字全部轉換成紅色，你會在CSS裡寫：
 
-![CSS宣告](../../.gitbook/assets/css-declaration-small.png)
+![CSS宣告](../../../.gitbook/assets/css-declaration-small.png)
 
 整個架構稱為規則集 (rule set)，或是簡稱為規則 (rule) 也可以。（也注意名字裡面的單獨部分）。
 
@@ -260,7 +260,7 @@ strong { font-size:20px; }
 
 下圖清楚的說明了>和空格的差異
 
-![空白與>符號的作用範圍](../../.gitbook/assets/child-combinator-selector-example.png)
+![空白與>符號的作用範圍](../../../.gitbook/assets/child-combinator-selector-example.png)
 
 ### 加號影響的是同一階層（immediate siblings）的標籤&#xD;
 
@@ -283,13 +283,13 @@ div + p {
 </div>
 ```
 
-![+符號的影響範圍](../../.gitbook/assets/css\_plus\_selector.png)
+![+符號的影響範圍](../../../.gitbook/assets/css\_plus\_selector.png)
 
 我們可以看到Three和Six都變大了，之所以Three和Six會變大，是因為CSS是選擇div + p，所以所有在同一階層（siblings）的情況下，如果是div接著碰到的p，都會受到影響。
 
 
 
-![+符號影響的範圍](../../.gitbook/assets/adjacent-selector-example.png)
+![+符號影響的範圍](../../../.gitbook/assets/adjacent-selector-example.png)
 
 ### 取代符號(\~)，取代符合則是影響到下一個同階層的所有元素&#xD;
 
@@ -312,11 +312,11 @@ div ~ p{
 </div>
 ```
 
-![\~符號影響的範圍](../../.gitbook/assets/css\_tilde\_symbol.png)
+![\~符號影響的範圍](../../../.gitbook/assets/css\_tilde\_symbol.png)
 
 這時候連Seven也跟著變大了，Seven之以跟著變大是因為seven同樣是在div之後的p（碰到的第二個p），在上面加號的例子中，div + p只會影響到div之後的第一個p，不會影響到後續的p，但如果使用的是div\~p，則div後面的p都能夠有影響。
 
-![\~符號影響的範圍](../../.gitbook/assets/general-sibling-example.png)
+![\~符號影響的範圍](../../../.gitbook/assets/general-sibling-example.png)
 
 ## 參考資料
 
