@@ -78,4 +78,5 @@
 ## python
 
 * [type註解](python/type-zhu-jie.md)
+* [mixin](python/mixin.md)
 * [matplotlib](python/matplotlib.md)
