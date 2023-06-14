@@ -2,6 +2,8 @@
 
 ## typing 模組&#x20;
 
+[https://docs.python.org/zh-tw/3/library/typing.html](https://docs.python.org/zh-tw/3/library/typing.html)
+
 Python 在 [PEP 484](https://peps.python.org/pep-0484/)中提出了 Type Hints（型別註解）。進一步強化了 Python 是一門強型別語言的特性，它在 Python3.5 中第一次被引入。使用 Type Hints 可以讓我們編寫出帶有型別的 Python 程式碼，看起來更加符合強型別語言風格。
 
 該模組並非用來規定 Python 程式必須使用什麼型別，而是透過型別註釋(type annotations)讓開發者或協作者可以更加瞭解某個變數的型別，也讓第三方的工具能夠實作型別檢查器(type checker)。
@@ -93,6 +95,22 @@ def foo(*args: str, **kwargs: int) -> None:
     passpyth
 
 foo("a", "b", 1, x=2, y="c")
+```
+
+## typing.Optional
+
+Optional\[X] 等價於 X | None （或 Union\[X, None] ） 。
+
+注意，可選類型與含預設值的可選參數不同。含預設值的可選參數不需要在類型註解上新增 Optional 限定符，因為它僅是可選的。
+
+```python
+def foo(arg: int = 0) -> None:
+```
+
+顯式應用 None 值時，不管該參數是否可選， Optional 都適用。
+
+```python
+def foo(arg: Optional[int] = None) -> None:
 ```
 
 ## typing.Union
