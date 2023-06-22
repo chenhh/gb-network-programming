@@ -16,6 +16,7 @@
 
 * [https://github.com/scrapy/itemloaders](https://github.com/scrapy/itemloaders)
 * [https://itemloaders.readthedocs.io/en/latest/](https://itemloaders.readthedocs.io/en/latest/)
+* [https://docs.scrapy.org/en/latest/topics/loaders.html#using-item-loaders-to-populate-items](https://docs.scrapy.org/en/latest/topics/loaders.html#using-item-loaders-to-populate-items)
 
 Item Loaders 提供了一個便利的機制來幫助填充Items；雖然Items 可以通過它類似 dict API 來填充，Item Loaders 提供了更多便利的方法來進行資料的充填。
 
@@ -23,9 +24,25 @@ Item Loaders 提供了一個便利的機制來幫助填充Items；雖然Items �
 
 #### 優點&#xD;
 
-* ItemLoader最大的好處是作為一個容器，可以益多個spiderg重復使用提取規則。
+* ItemLoader最大的好處是作為一個容器，可以從多個spider重復使用提取規則。
 * 可以把規則動態添加，因為規則可以放入資料庫或者文件中。
 * ItemLoader不用考慮是否為空，是否是0的值。
+
+## 範例
+
+```python
+from scrapy.loader import ItemLoader
+from myproject.items import Product
+
+def parse(self, response):
+    l = ItemLoader(item=Product(), response=response)
+    l.add_xpath("name", '//div[@class="product_name"]')
+    l.add_xpath("name", '//div[@class="product_title"]')
+    l.add_xpath("price", '//p[@id="price"]')
+    l.add_css("stock", "p#stock")
+    l.add_value("last_updated", "today")  
+    return l.load_item()
+```
 
 
 
