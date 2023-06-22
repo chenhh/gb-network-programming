@@ -14,6 +14,7 @@
       * [FAQ: 網頁](master/scrapy/faq/faq-wang-ye.md)
     * [scrapyd](master/scrapy/scrapyd.md)
     * [在 Scrapy 中操作瀏覽器](master/scrapy/zai-scrapy-zhong-cao-zuo-liu-lan-qi.md)
+* [nginx](nginx.md)
 * [http](http/README.md)
   * [https](http/https.md)
 * [Coroutine](coroutine/README.md)
