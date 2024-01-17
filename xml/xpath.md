@@ -51,3 +51,4 @@ XPath 是W3C官方推薦的語言。 它定義了一種在XML文件中查找信�
 
 * [\[IT人\]selenium之xpath語法總結](https://iter01.com/539620.html)
 * [\[CSDN\] Python selenium —— 父子、兄弟、相鄰節點定位方式詳解](https://blog.csdn.net/huilan\_same/article/details/52541680)
+* [https://blog.csdn.net/WilliamChancwl/article/details/85302889](https://blog.csdn.net/WilliamChancwl/article/details/85302889)
