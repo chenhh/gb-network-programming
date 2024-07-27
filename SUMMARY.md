@@ -80,4 +80,6 @@
 
 * [type註解](python/type-zhu-jie.md)
 * [mixin](python/mixin.md)
-* [matplotlib](python/matplotlib.md)
+* [matplotlib](python/matplotlib/README.md)
+  * [title(標題)](python/matplotlib/title-biao-ti.md)
+  * [mpld3](python/matplotlib/mpld3.md)
