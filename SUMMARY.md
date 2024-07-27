@@ -17,8 +17,6 @@
 * [nginx](nginx.md)
 * [http](http/README.md)
   * [https](http/https.md)
-* [Coroutine](coroutine/README.md)
-  * [asyncio](coroutine/asyncio.md)
 * [正規表示式(regular expression)](regular-expression.md)
 * [XML](xml/README.md)
   * [XBRL(財務報表語言)](xml/xbrl.md)

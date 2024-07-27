@@ -2,9 +2,23 @@
 
 以python3.9之後的版本為主。
 
-非同步程式常用於需要等待IO的程式，如網路呼叫經常在等待遠端回應而非計算，也可使用multi-process或-threading的程式，但會使用較多的系統資源。
+除了本身程式的運算之外， 在網路的傳輸(外部API)、硬碟的存取(I/O)的服務都不應該阻塞我們的程式， 因此我們可以透過 asyncio 來做一個任務委外的動作， 而程式本身的運算也能夠持續執行， 這就是非同步的主要使用情境。
+
+同步與非同步程式的差別在於執行過程不會等待 IO 回應，而是繼續執行下面的程式碼，讓 IO 與後續流程作為事件 (event) 形式，並透過輪詢 (polling) 與回撥 (callback) 觸發執行後續程式碼。
+
+### 並行 (Concurrent) 與平行 (Parallel)
+
+並行 (Concurrent) 含意是一種「得以在同時間有兩個以上的計算在處理」的程式語言或是各種演算法；而平行 (Parallel) 是一種實現並行的一種模式。
+
+一個衝突的案例是：當你只有一個處理器時，你依然可以擁有並行運算，但你無法透過平行實現。
+
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>同步與非同步程式(<a href="https://codimd.mcl.math.ncu.edu.tw/s/yTqt6QuaZ">來源</a>)</p></figcaption></figure>
+
+
 
 asyncio 能夠讓開發者針對類似上述提及的 I/O 等待時間造成程式效能低落的問題，將 CPU 從等待中解放，徹底利用 CPU 的運算資源。其原理為在程式中需要進行等待的地方，讓 CPU 切換執行其他工作，並稍後再切換回剛剛等待的地方確認是否等待已有結果，如果沒有結果就再進行切換執行其他工作(自行手動管理非同步函數的context switch)，看起來也很像同時間平行執行很多工作一樣，但資源的使用上相對於使用 multiprocessing 或 threading 模組來得少。
+
+<figure><img src="../.gitbook/assets/image.png" alt="" width="375"><figcaption><p>非同步IO模組</p></figcaption></figure>
 
 
 
