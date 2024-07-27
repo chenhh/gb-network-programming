@@ -22,9 +22,9 @@
 * [正規表示式(regular expression)](regular-expression.md)
 * [XML](xml/README.md)
   * [XBRL(財務報表語言)](xml/xbrl.md)
-  * [XML Schema](<xml/xml-schema (1).md>)
-  * [XSLT](xml/xslt.md)
   * [XML Schema](xml/xml-schema.md)
+  * [XSLT](xml/xslt.md)
+  * [XML Schema](xml/xml-schema-1.md)
   * [XPath](xml/xpath.md)
 
 ## javascript與nodejs
@@ -48,7 +48,7 @@
 * [瀏覽器裡的 JavaScript](javascript-yu-nodejs/liu-lan-qi-li-de-javascript/README.md)
   * [事件驅動](javascript-yu-nodejs/liu-lan-qi-li-de-javascript/shi-jian-qu-dong.md)
   * [capturing, bubbling and delegation](javascript-yu-nodejs/liu-lan-qi-li-de-javascript/capturing-bubbling-and-delegation.md)
-* [FAQ](javascript/faq.md)
+* [FAQ](javascript-yu-nodejs/faq.md)
 * [Canvas](javascript-yu-nodejs/canvas.md)
 * [Node.js](javascript-yu-nodejs/node.js/README.md)
   * [webpack](javascript-yu-nodejs/node.js/webpack.md)

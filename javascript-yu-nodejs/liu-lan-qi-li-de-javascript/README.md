@@ -169,4 +169,4 @@ DOM 節點為樹狀結構，有分層的概念，因此節點與節點之間的�
 * <mark style="color:red;">父子關係</mark>： 除了 document 之外，每一個節點都會有個上層的節點，我們通常稱之為「父節點」 (Parent node)，而相對地，從屬於自己下層的節點，就會稱為「子節點」(Child node)。
 * <mark style="color:red;">兄弟關係</mark>：有同一個「父節點」的節點，那麼他們彼此之間就是「兄弟節點」(Siblings node)。
 
-![DOM樹元素的階層關 ](<../../.gitbook/assets/dom\_tree\_parent\_sibling-min (1).png>)
+![DOM樹元素的階層關 ](../../.gitbook/assets/dom\_tree\_parent\_sibling-min.png)
