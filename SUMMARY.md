@@ -17,8 +17,6 @@
 * [nginx](nginx.md)
 * [http](http/README.md)
   * [https](http/https.md)
-* [Coroutine](coroutine/README.md)
-  * [asyncio](coroutine/asyncio.md)
 * [正規表示式(regular expression)](regular-expression.md)
 * [XML](xml/README.md)
   * [XBRL(財務報表語言)](xml/xbrl.md)
@@ -80,6 +78,7 @@
 
 * [type註解](python/type-zhu-jie.md)
 * [mixin](python/mixin.md)
+* [asyncio](python/asyncio.md)
 * [exception group](python/exception-group.md)
 * [matplotlib](python/matplotlib/README.md)
   * [title(標題)](python/matplotlib/title-biao-ti.md)
